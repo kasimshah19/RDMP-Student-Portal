@@ -68,11 +68,19 @@ This project was developed collaboratively by a two-person engineering team, dem
 | **Data Visualization**| Recharts, Lucide React | Interactive, responsive SVG graphing for analytics and lightweight, consistent iconography. |
 
 ## ⚙️ System Workflow & Security Measures
-To showcase an enterprise-ready posture, several critical backend architectures were enforced:
-1. **Model Relationality:** Utilizes strict `mongoose.Schema.Types.ObjectId` referencing between complex models (e.g., `LibraryTransaction`, `FeeInvoice`, `Timetable` all bound securely to the core `Student` profile).
-2. **Double-Layer Validation:** Inputs are sanitized on the UI layer before being caught and strictly re-validated through Mongoose pre-save hooks (like password hashing via `bcrypt`).
-3. **Graceful Error Catching:** Global Error Handling middleware uniformly intercepts database crashes or empty states and serves contextual JSON messages rather than crashing the Express runtime.
-4. **Token Interceptor Fallbacks:** The `api.js` client acts as a silent sentry; intercepting `401 Unauthorized` codes and triggering automatic logout procedures, securing client sessions robustly.
+To showcase a truly enterprise-ready posture, several critical full-stack architectural paradigms and security measures are strictly enforced across the application lifecycle:
+
+1. 🔒 **Advanced Relational Data Modeling (MongoDB):** 
+   Utilizes strict `mongoose.Schema.Types.ObjectId` referencing and complex aggregation pipelines to build dynamic relationships between models. For instance, `LibraryTransaction`, `LeaveApplication`, and `FeeInvoice` are safely bound to the core `Student` profile, ensuring zero orphaned records.
+
+2. 🛡️ **Zero-Trust Double-Layer Validation:** 
+   Client-side sanitized strings are never trusted implicitly. Inputs undergo rigorous secondary schema validation on the Node.js boundary, utilizing built-in Mongoose validators and secure pre-save lifecycle hooks (e.g., dynamic password salting & hashing via `bcryptjs`).
+
+3. 🚦 **Global Graceful Error Catching & Rate Limiting:** 
+   Custom centralized Error Handling middleware intercepts fatal database crashes, CastErrors, and API edge cases, serving scrubbed contextual JSON payloads rather than crashing the Express runtime. Furthermore, `express-rate-limit` prevents brute-force polling globally.
+
+4. 🔄 **Silent Token Interceptors & Session Management:** 
+   The frontend `api.js` Axios instance operates as a silent sentry. It intercepts HTTP `401 Unauthorized` and `403 Forbidden` response codes across all components globally, purging stale context state and triggering automatic secure logout procedures to guarantee deterministic session lifecycles.
 
 ## 🔑 Live Test Credentials
 
