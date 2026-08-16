@@ -18,7 +18,7 @@ import {
     Trophy,
     Award
 } from 'lucide-react';
-import api from '../../utils/api';
+import api from '../../services/api';
 
 const STUDENT_ACHIEVEMENTS = [
     { rank: 'gold', name: 'Riya Sharma', class: '12th Science', detail: '1st in State Physics Olympiad' },
