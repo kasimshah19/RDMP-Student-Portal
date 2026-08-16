@@ -28,10 +28,8 @@ This project was developed collaboratively by a two-person engineering team, dem
 
 | Role | Developer Name | Key Responsibilities & Contributions |
 | :--- | :--- | :--- |
-| **Backend Engineer & QA** | **Kasim Shah** *(Me)* | 🔹 Designed the entire MongoDB schema & entity relationships.<br>🔹 Created 19 robust RESTful APIs with strict access policies.<br>🔹 Implemented JWT Auth, Security (Rate Limiting, Helmet).<br>🔹 Automated environment DB Seeders & E2E Testing.<br>🔹 Handled server CI/CD pipeline deployments (Render). |
-| **Frontend Engineer & UI/UX** | **[Friend's Name]** | 🔹 Architected the React (Vite) interface and routing logic.<br>🔹 Designed responsive, fully accessible modular dashboards.<br>🔹 Consolidated React Context for Auth state management.<br>🔹 Handled Axios interceptors & UI side effects.<br>🔹 Managed client CI/CD pipeline deployments (Vercel). |
-
-*(Note: Replace `[Friend's Name]` with the actual co-developer's name)*
+| **Backend Engineer & QA** | **Kasim Shah** *(Me)* | 🔹 **Database Architecture:** Designed normalized MongoDB schemas with optimized indexing and complex aggregate queries.<br>🔹 **API Development:** Engineered 19+ secure RESTful endpoints mapping complex business logic to controllers.<br>🔹 **Security Operations:** Fortified backend with JWT stateless auth, Helmet headers, CORS, and Express Rate Limiting.<br>🔹 **Testing & Deployment:** Handled Postman endpoint testing, DB seeding automation, and seamless CI/CD to Render. |
+| **Frontend Engineer & UI/UX** | **Sohel Shaikh** | 🔹 **Interface Architecture:** Spearheaded the React 19 (Vite) structure, prioritizing modular component design and lazy loading.<br>🔹 **UI/UX Design:** Crafted highly responsive and aesthetically pleasing dashboards using modern TailwindCSS utilities.<br>🔹 **State & Routing:** Centralized application state via Context API and managed protected React Router navigation.<br>🔹 **Client Integration:** Implemented Axios interceptors for robust token refreshing and deployed flawlessly to Vercel. |
 
 ## 🚀 Key Features by Role
 
