@@ -15,6 +15,8 @@ router.get('/timetable', protect, authorizeRoles('student'), studentController.g
 router.get('/fees', protect, authorizeRoles('student'), studentController.getStudentFees);
 router.get('/library', protect, authorizeRoles('student'), studentController.getStudentLibrary);
 router.get('/leave', protect, authorizeRoles('student'), studentController.getStudentLeave);
+router.post('/leave', protect, authorizeRoles('student'), studentController.applyForLeave);
+router.post('/feedback', protect, authorizeRoles('student'), studentController.submitFeedback);
 
 
 // Admin routes

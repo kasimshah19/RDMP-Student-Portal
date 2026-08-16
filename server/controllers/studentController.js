@@ -1,6 +1,11 @@
 const Student = require('../models/Student');
 const ClassGroup = require('../models/ClassGroup');
 const Division = require('../models/Division');
+const Timetable = require('../models/Timetable');
+const FeeInvoice = require('../models/FeeInvoice');
+const LibraryTransaction = require('../models/LibraryTransaction');
+const LeaveApplication = require('../models/LeaveApplication');
+const Feedback = require('../models/Feedback');
 
 // @desc Get student profile (self)
 // @route GET /api/student/me
@@ -224,65 +229,103 @@ exports.getStudentExaminations = async (req, res) => {
 
 exports.getStudentTimetable = async (req, res) => {
     try {
-        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-        const periods = [
-            { time: '09:00 AM - 09:45 AM', type: 'Lecture' },
-            { time: '09:45 AM - 10:30 AM', type: 'Lecture' },
-            { time: '10:30 AM - 10:45 AM', type: 'Break' },
-            { time: '10:45 AM - 11:30 AM', type: 'Lecture' },
-            { time: '11:30 AM - 12:15 PM', type: 'Lecture' },
-            { time: '12:15 PM - 01:00 PM', type: 'Lunch' },
-            { time: '01:00 PM - 02:45 PM', type: 'Practical' }
-        ];
-        const subjects = ['Physics', 'Chemistry', 'Mathematics', 'English', 'Computer Science'];
+        const student = await Student.findById(req.user.id);
+        if (!student || !student.divisionId) {
+            return res.status(404).json({ success: false, message: 'Student or assigned division not found' });
+        }
+
+        const timelineDocs = await Timetable.find({ divisionId: student.divisionId })
+            .populate('periods.subjectId', 'name')
+            .populate('periods.teacherId', 'name');
+
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+        // Format the output to match the original structure perfectly
         const timeline = days.map(d => {
+            const dayDoc = timelineDocs.find(t => t.dayOfWeek === d);
+            if (!dayDoc) {
+                return { day: d, classes: [] };
+            }
+
             return {
                 day: d,
-                classes: periods.map(p => {
-                    if (p.type === 'Break' || p.type === 'Lunch') return { ...p, subject: p.type, room: '' };
-                    let sub = subjects[Math.floor(Math.random() * subjects.length)];
-                    return { ...p, subject: p.type === 'Practical' ? sub + ' Lab' : sub, room: 'Room ' + (101 + Math.floor(Math.random() * 5)) };
+                classes: dayDoc.periods.map(p => {
+                    return {
+                        time: p.timeSlot,
+                        type: p.type,
+                        subject: p.type === 'Break' || p.type === 'Lunch' ? p.type : (p.subjectId?.name || p.type),
+                        room: p.room || '',
+                        teacher: p.teacherId?.name || ''
+                    };
                 })
             };
-        });
+        }).filter(t => t.classes.length > 0); // Only return days with classes
+
         res.json({ success: true, data: timeline });
-    } catch(err) { res.status(500).json({ success: false, message: err.message }); }
+    } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
 exports.getStudentFees = async (req, res) => {
     try {
+        const invoices = await FeeInvoice.find({ studentId: req.user.id }).sort('dueDate');
+
+        const mappedInvoices = invoices.map(inv => ({
+            id: inv._id,
+            term: inv.term,
+            amount: inv.amount,
+            status: inv.status,
+            date: inv.issueDate.toISOString().split('T')[0],
+            dueDate: inv.dueDate.toISOString().split('T')[0],
+            paymentReference: inv.paymentReference
+        }));
+
         res.json({
             success: true,
-            data: [
-                { id: 'INV-2025-01', term: 'Term 1', amount: 45000, status: 'paid', date: '2025-04-15' },
-                { id: 'INV-2025-02', term: 'Term 2', amount: 45000, status: 'pending', date: '2025-10-15', dueDate: '2025-11-01' }
-            ]
+            data: mappedInvoices
         });
-    } catch(err) { res.status(500).json({ success: false, message: err.message }); }
+    } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
 exports.getStudentLibrary = async (req, res) => {
     try {
+        const books = await LibraryTransaction.find({ studentId: req.user.id }).sort('-issueDate');
+
+        const mappedBooks = books.map(book => ({
+            id: book.bookId,
+            title: book.title,
+            author: book.author || 'Unknown',
+            issueDate: book.issueDate.toISOString().split('T')[0],
+            dueDate: book.dueDate.toISOString().split('T')[0],
+            status: book.status
+        }));
+
         res.json({
             success: true,
-            data: [
-                { id: 'BK-1012', title: 'Advanced Calculus', author: 'Spivak', issueDate: '2026-08-01', dueDate: '2026-08-15', status: 'overdue' },
-                { id: 'BK-3044', title: 'University Physics', author: 'Young', issueDate: '2026-08-10', dueDate: '2026-08-24', status: 'issued' }
-            ]
+            data: mappedBooks
         });
-    } catch(err) { res.status(500).json({ success: false, message: err.message }); }
+    } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
 exports.getStudentLeave = async (req, res) => {
     try {
+        const leaves = await LeaveApplication.find({
+            applicantId: req.user.id,
+            applicantType: 'Student'
+        }).sort('-fromDate');
+
+        const mappedLeaves = leaves.map(leave => ({
+            id: leave._id,
+            fromDate: leave.fromDate.toISOString().split('T')[0],
+            toDate: leave.toDate.toISOString().split('T')[0],
+            reason: leave.reason,
+            status: leave.status
+        }));
+
         res.json({
             success: true,
-            data: [
-                { id: 'LV-101', fromDate: '2026-07-15', toDate: '2026-07-16', reason: 'Fever', status: 'approved' },
-                { id: 'LV-102', fromDate: '2026-08-20', toDate: '2026-08-21', reason: 'Family Function', status: 'pending' }
-            ]
+            data: mappedLeaves
         });
-    } catch(err) { res.status(500).json({ success: false, message: err.message }); }
+    } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
 // @desc Get all students (filter by class/division)
@@ -343,15 +386,63 @@ exports.assignDivision = async (req, res) => {
         if (!student) return res.status(404).json({ success: false, message: 'Student not found' });
 
         student.divisionId = divisionId;
-        if (classGroupId) student.classGroupId = classGroupId; // optional class change mapping
+        if (classGroupId) student.classGroupId = classGroupId;
 
-        // Adjust sequential roll number on transfer 
         const countInDiv = await Student.countDocuments({ divisionId, _id: { $ne: student._id } });
         student.rollNumber = `${countInDiv + 1}`;
 
         await student.save();
 
         res.json({ success: true, data: student, message: 'Student Reassigned Division uniquely.' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+// @desc Apply for Leave
+// @route POST /api/student/leave
+// @access Student
+exports.applyForLeave = async (req, res) => {
+    try {
+        const { type, startDate, endDate, reason } = req.body; // type corresponds to 'Sick Leave' etc from frontend, but we mapped reason to string in Schema
+
+        const fromDate = new Date(startDate);
+        const toDate = new Date(endDate);
+
+        if (toDate < fromDate) {
+            return res.status(400).json({ success: false, message: 'End Date cannot be before Start Date' });
+        }
+
+        const leave = await LeaveApplication.create({
+            applicantType: 'Student',
+            applicantId: req.user.id,
+            fromDate,
+            toDate,
+            reason: `[${type}] ${reason}`, // Storing the type in the reason line to maintain simpler Schema compatibility
+            status: 'pending'
+        });
+
+        res.status(201).json({ success: true, data: leave });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+// @desc Submit Feedback
+// @route POST /api/student/feedback
+// @access Student
+exports.submitFeedback = async (req, res) => {
+    try {
+        const { rating, category, message } = req.body;
+
+        const feedback = await Feedback.create({
+            studentId: req.user.id,
+            rating,
+            category,
+            message
+        });
+
+        res.status(201).json({ success: true, data: feedback });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
