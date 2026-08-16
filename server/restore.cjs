@@ -1,0 +1,17 @@
+const fs = require('fs');
+let code = fs.readFileSync('server.js', 'utf8');
+code = code.replace("app.use('/api/auth', require('./routes/authRoutes'));", `app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/admin', require('./routes/adminRoutes'));
+app.use('/api/teacher', require('./routes/teacherRoutes'));
+app.use('/api/student', require('./routes/studentRoutes'));
+app.use('/api/admission', require('./routes/admissionRoutes'));
+app.use('/api/classes', require('./routes/classRoutes'));
+app.use('/api/attendance', require('./routes/attendanceRoutes'));
+app.use('/api/exams', require('./routes/examRoutes'));
+app.use('/api/marks', require('./routes/marksRoutes'));
+app.use('/api/documents/admin', require('./routes/documentRoutes'));
+app.use('/api/dashboard', require('./routes/dashboardRoutes'));
+app.use('/api/notices', require('./routes/noticeRoutes'));
+app.use('/api/reports', require('./routes/reportRoutes'));`);
+fs.writeFileSync('server.js', code);
+console.log("Restored all routes successfully.");
