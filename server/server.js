@@ -76,6 +76,7 @@ app.use('/api/documents/student', require('./routes/studentDocumentRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
 app.use('/api/notices', require('./routes/noticeRoutes'));
 app.use('/api/reports', require('./routes/reportRoutes'));
+app.use('/api/public', require('./routes/publicRoutes'));
 // Secure static uploads path
 const { protect } = require('./middleware/authMiddleware');
 const { authorizeRoles } = require('./middleware/roleMiddleware');

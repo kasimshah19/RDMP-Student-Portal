@@ -37,6 +37,8 @@ import DocumentVerification from '../pages/admin/DocumentVerification';
 import { AuthContext } from '../context/AuthContext';
 import AdminTeacherLayout from '../components/layout/AdminTeacherLayout';
 import StudentLayout from '../components/layout/StudentLayout';
+import PublicLayout from '../components/layout/PublicLayout';
+import Home from '../pages/public/Home';
 import UnderConstruction from '../pages/shared/UnderConstruction';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -64,10 +66,13 @@ const LoginRoute = () => {
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<DefaultRedirect />} />
             <Route path="/login" element={<LoginRoute />} />
 
             {/* Public */}
+            <Route element={<PublicLayout />}>
+                <Route path="/" element={<Home />} />
+            </Route>
+
             <Route path="/admission/apply" element={<AdmissionForm />} />
             <Route path="/admission/:applicationId/documents" element={<DocumentUpload />} />
             <Route path="/admission/status" element={<ApplicationStatus />} />
