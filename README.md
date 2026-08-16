@@ -33,20 +33,20 @@ This project was developed collaboratively by a two-person engineering team, dem
 
 ## 🚀 Key Features by Role
 
-### 👨‍💼 1. Administrator Dashboard
-- **Entity Management:** Full CRUD authorization over Students, Teachers, and Classes.
-- **Academic Control:** Global notice generation and file/document circulation.
-- **Insights:** High-level statistical views of college capacity, financial reports, and ongoing examinations.
+### 👨‍💼 1. Administrator Dashboard (Superuser)
+- **Centralized Entity Management:** Engineered dynamic CRUD interfaces for managing Students, Teachers, and Divisions, bound securely to underlying MongoDB document collections.
+- **Institutional Broadcasting:** Built an automated Notice Board system for institute-wide announcements, circulars, and document distribution.
+- **Data-Driven Insights:** Developed interactive statistical widgets powered by complex MongoDB Aggregation Pipelines to visualize college capacity, financial invoices, and global attendance metrics.
 
-### 👨‍🏫 2. Teacher Dashboard
-- **Attendance Registry:** Real-time bulk attendance marking with virtualized absence tracking.
-- **Grading App:** Submission of academic scores across multiple terms (Mid, Final).
-- **Division Authority:** Supervised control over assigned division's specific leave applications and timetable periods.
+### 👨‍🏫 2. Teacher Dashboard (Faculty)
+- **Dynamic Attendance Registry:** Architected a highly performant, real-time bulk attendance system featuring visual absence mapping and automated percentage calculations.
+- **Comprehensive Grading Engine:** Delivered a structured marks entry and submission portal supporting multi-term validation logic (Mid-term, Final exams).
+- **Division Autonomy:** Integrated hierarchical authorization, granting assigned teachers sovereign control over their division's timetables and the ability to instantly approve/reject student leave applications.
 
-### 👨‍🎓 3. Student Portal
-- **Academic Transparency:** Real-time checking of personal marks, exam timetables, and period schedules.
-- **Self-Service:** Independent leave application portal and feedback/grievance submissions.
-- **Financials & Library:** Track outstanding fee invoices, payment dues, and library book transactions.
+### 👨‍🎓 3. Student Portal (Self-Service)
+- **Real-Time Academic Transparency:** Implemented seamless Read-Only access endpoints allowing students to securely track personal daily timetables, exam schedules, and graded subject reports.
+- **Automated Grievance & Leave Systems:** Created streamlined POST pipelines for students to independently apply for sick leaves and submit structured feedback directly to administrators.
+- **Financial tracking & Library Index:** Integrated dynamic tracking systems for real-time monitoring of outstanding fee invoices, payment deadlines, and authenticated library book transactions.
 
 ## 🛠 Tech Stack
 
