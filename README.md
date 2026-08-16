@@ -7,11 +7,11 @@
   <h1>🎓 RDMP Student Portal (College Management System)</h1>
   <p>A comprehensive, full-stack Academic Management Solution designed to streamline hierarchical college operations across Admins, Teachers, and Students securely.</p>
 
-  | Deployment Tier | Server | Live Link |
-  | :--- | :--- | :--- |
-  | 🌐 **Frontend UI** | Vercel | [View Live Frontend →](https://rdmp-student-portal.vercel.app) |
-  | ⚡ **Backend API** | Render | [View API Endpoint →](https://rdmp-student-portal.onrender.com) |
-  | 🗄️ **Database** | MongoDB Atlas | *[Private Cluster (Secured)]* |
+  | Deployment Tier | Server | Details & Architecture | Live Link |
+  | :--- | :--- | :--- | :--- |
+  | 🌐 **Frontend UI** | Vercel | React 19 (Vite) SPA enforcing dynamic RBAC routing, Context API auth, and responsive Tailwind dashboards. | [View Live Frontend →](https://rdmp-student-portal.vercel.app) |
+  | ⚡ **Backend API** | Render | Node.js Express REST API managing 19 endpoints with JWT security, Rate Limiting, and CORS policies. | [View API Endpoint →](https://rdmp-student-portal.onrender.com) |
+  | 🗄️ **Database** | MongoDB Atlas | Cloud NoSQL cluster utilizing strict Mongoose schema validation and robust ObjectID relational binding. | *[Private Cluster (Secured)]* |
 </div>
 
 <hr/>
