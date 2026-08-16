@@ -50,6 +50,15 @@ app.use('/api', globalLimiter);
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
+// Root Route to prevent 404 on direct domain visit
+app.get('/', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'RDMP Student Portal API is running successfully!',
+        environment: process.env.NODE_ENV,
+        secure_cors: true
+    });
+});
 
 // Routes
 // TODO: Import and mount routes here
