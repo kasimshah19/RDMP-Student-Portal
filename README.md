@@ -51,21 +51,21 @@ This project was developed collaboratively by a two-person engineering team, dem
 ## 🛠 Tech Stack
 
 ### 🖥 Backend Architecture (Node.js ecosystem)
-| Area | Technologies Used |
-| :--- | :--- |
-| **Runtime & Framework** | Node.js, Express.js |
-| **Database & ODM** | MongoDB Atlas, Mongoose |
-| **Security & Auth**| bcryptjs, jsonwebtoken (JWT), Helmet, Express-Rate-Limit |
-| **File Handling** | Multer, PDF-Lib |
+| Architectural Layer | Core Technologies | Implementation Details |
+| :--- | :--- | :--- |
+| **Runtime & Framework** | Node.js, Express.js | High-performance, non-blocking asynchronous event-driven server runtime. |
+| **Database & ODM** | MongoDB Atlas, Mongoose | Cloud-hosted NoSQL with strict schema validation, pre-save hooks, and complex aggregate pipelines. |
+| **Security & Auth**| bcryptjs, JWT, Helmet, Rate-Limit | Multi-layered security: password hashing, stateless tokens, header fortification, and DDOS protection. |
+| **File Handling** | Multer, PDF-Lib | Secure multi-part form data parsing and dynamic server-side PDF document generation. |
 
 ### 🎨 Frontend Architecture (React ecosystem)
-| Area | Technologies Used |
-| :--- | :--- |
-| **Core Framework** | React 19, Vite |
-| **Styling** | TailwindCSS v4 |
-| **State Management**| Context API, React Hooks |
-| **Routing & Http** | React Router DOM v7, Axios |
-| **UI Components** | Lucide React (Icons), Recharts (Graphing) |
+| Architectural Layer | Core Technologies | Implementation Details |
+| :--- | :--- | :--- |
+| **Core Framework** | React 19, Vite | Lightning-fast HMR, highly modular component architecture, and optimized production builds. |
+| **Styling & UI** | TailwindCSS v4 | Utility-first CSS for pixel-perfect, highly responsive, and accessible dashboard layouts. |
+| **State Management**| Context API, React Hooks | Centralized global auth state management bridging deeply nested component trees securely. |
+| **Routing & Http** | React Router DOM v7, Axios | Robust client-side routing with exact Role-Based Access Control (RBAC) and token interceptors. |
+| **Data Visualization**| Recharts, Lucide React | Interactive, responsive SVG graphing for analytics and lightweight, consistent iconography. |
 
 ## ⚙️ System Workflow & Security Measures
 To showcase an enterprise-ready posture, several critical backend architectures were enforced:
