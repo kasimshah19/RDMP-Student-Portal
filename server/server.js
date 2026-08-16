@@ -20,7 +20,17 @@ app.use(express.json());
 // CORS configuration dynamically securing origins mapped explicitly nicely bounds properly cleanly globally natively flawlessly clean perfectly safely
 const corsOptions = {
     origin: function (origin, callback) {
-        callback(null, true);
+        const allowedOrigins = [
+            process.env.CLIENT_URL,
+            'http://localhost:5173',
+            'http://localhost:3000'
+        ].filter(Boolean);
+
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Blocked by Strict CORS Policy'));
+        }
     },
     credentials: true,
 };
