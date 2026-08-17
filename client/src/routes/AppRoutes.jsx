@@ -71,6 +71,13 @@ const AppRoutes = () => {
             {/* Public */}
             <Route element={<PublicLayout />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/about" element={<UnderConstruction />} />
+                <Route path="/admissions" element={<UnderConstruction />} />
+                <Route path="/academics" element={<UnderConstruction />} />
+                <Route path="/students" element={<UnderConstruction />} />
+                <Route path="/notices" element={<UnderConstruction />} />
+                <Route path="/gallery" element={<UnderConstruction />} />
+                <Route path="/contact" element={<UnderConstruction />} />
             </Route>
 
             <Route path="/admission/apply" element={<AdmissionForm />} />
