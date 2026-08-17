@@ -78,6 +78,11 @@ const AppRoutes = () => {
                 <Route path="/notices" element={<UnderConstruction />} />
                 <Route path="/gallery" element={<UnderConstruction />} />
                 <Route path="/contact" element={<UnderConstruction />} />
+                <Route path="/calendar" element={<UnderConstruction />} />
+                <Route path="/fee-structure" element={<UnderConstruction />} />
+                <Route path="/downloads" element={<UnderConstruction />} />
+                <Route path="/exam-timetable" element={<UnderConstruction />} />
+                <Route path="/results" element={<UnderConstruction />} />
             </Route>
 
             <Route path="/admission/apply" element={<AdmissionForm />} />

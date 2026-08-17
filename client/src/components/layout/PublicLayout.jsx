@@ -234,11 +234,11 @@ export default function PublicLayout() {
                     <div>
                         <h3 className="font-semibold mb-5 text-[14px]">Important Links</h3>
                         <ul className="space-y-3 text-[13px] opacity-75 flex flex-col">
-                            <Link to="#" className="hover:text-white transition-colors">Academic Calendar</Link>
-                            <Link to="#" className="hover:text-white transition-colors">Fee Structure</Link>
-                            <Link to="#" className="hover:text-white transition-colors">Downloads</Link>
-                            <Link to="#" className="hover:text-white transition-colors">Exam Timetable</Link>
-                            <Link to="#" className="hover:text-white transition-colors">Results</Link>
+                            <Link to="/calendar" className="hover:text-white transition-colors">Academic Calendar</Link>
+                            <Link to="/fee-structure" className="hover:text-white transition-colors">Fee Structure</Link>
+                            <Link to="/downloads" className="hover:text-white transition-colors">Downloads</Link>
+                            <Link to="/exam-timetable" className="hover:text-white transition-colors">Exam Timetable</Link>
+                            <Link to="/results" className="hover:text-white transition-colors">Results</Link>
                         </ul>
                     </div>
 
