@@ -40,6 +40,11 @@ import StudentLayout from '../components/layout/StudentLayout';
 import PublicLayout from '../components/layout/PublicLayout';
 import Home from '../pages/public/Home';
 import About from '../pages/public/About';
+import {
+    AdmissionsOverview, Class11Admission, Class12Continuation,
+    AdmissionProcess, Eligibility, DocumentsRequired,
+    ImportantDates, FeesPayment, FAQs, ContactAdmission
+} from '../pages/public/admissions/AdmissionPages';
 import UnderConstruction from '../pages/shared/UnderConstruction';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -73,7 +78,19 @@ const AppRoutes = () => {
             <Route element={<PublicLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/admissions" element={<UnderConstruction />} />
+
+                {/* Admissions Module */}
+                <Route path="/admissions" element={<AdmissionsOverview />} />
+                <Route path="/admissions/class-11" element={<Class11Admission />} />
+                <Route path="/admissions/class-12" element={<Class12Continuation />} />
+                <Route path="/admissions/process" element={<AdmissionProcess />} />
+                <Route path="/admissions/eligibility" element={<Eligibility />} />
+                <Route path="/admissions/documents" element={<DocumentsRequired />} />
+                <Route path="/admissions/dates" element={<ImportantDates />} />
+                <Route path="/admissions/fees" element={<FeesPayment />} />
+                <Route path="/admissions/faqs" element={<FAQs />} />
+                <Route path="/admissions/contact" element={<ContactAdmission />} />
+
                 <Route path="/academics" element={<UnderConstruction />} />
                 <Route path="/students" element={<UnderConstruction />} />
                 <Route path="/notices" element={<UnderConstruction />} />

@@ -4,9 +4,11 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import {
     Menu, X, ChevronDown, MapPin, Phone, Mail, Home as HomeIcon, User
 } from "lucide-react";
+import AdmissionsMegaMenu, { ADMISSION_MENU_ITEMS } from './AdmissionsMegaMenu';
 
 export default function PublicLayout() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [mobileAdmissionsOpen, setMobileAdmissionsOpen] = useState(false);
     const { isAuthenticated, user } = useContext(AuthContext);
     const location = useLocation();
 
@@ -116,11 +118,31 @@ export default function PublicLayout() {
                     </div>
                     <nav className="flex flex-col gap-4">
                         {NAV_LINKS.map((nav, idx) => (
-                            <div key={idx}>
-                                <Link to={nav.path || "#"} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-1 text-base font-medium opacity-90 hover:opacity-100 ${location.pathname === nav.path && nav.path !== '#' ? 'text-brass' : ''}`}>
-                                    {nav.label} {nav.dropdown && <ChevronDown size={14} className="opacity-60" />}
-                                </Link>
-                            </div>
+                            nav.label === "Admissions" ? (
+                                <div key={idx} className="flex flex-col gap-2">
+                                    <button onClick={() => setMobileAdmissionsOpen(!mobileAdmissionsOpen)} className={`flex items-center gap-1 text-base font-medium opacity-90 hover:opacity-100 ${location.pathname.startsWith('/admissions') ? 'text-blue-400' : ''}`}>
+                                        {nav.label} <ChevronDown size={14} className={`opacity-60 transition-transform ${mobileAdmissionsOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    {mobileAdmissionsOpen && (
+                                        <div className="pl-4 flex flex-col gap-3 mt-1 border-l border-white/20">
+                                            {ADMISSION_MENU_ITEMS.map((item, i) => (
+                                                <Link key={i} to={item.path} onClick={() => setMobileMenuOpen(false)} className="text-sm opacity-80 hover:opacity-100">
+                                                    {item.title}
+                                                </Link>
+                                            ))}
+                                            <Link to="/admissions" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-blue-400 mt-2">
+                                                Start Admission Guidance →
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                <div key={idx}>
+                                    <Link to={nav.path || "#"} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-1 text-base font-medium opacity-90 hover:opacity-100 ${location.pathname === nav.path && nav.path !== '#' ? 'text-brass' : ''}`}>
+                                        {nav.label} {nav.dropdown && <ChevronDown size={14} className="opacity-60" />}
+                                    </Link>
+                                </div>
+                            )
                         ))}
                     </nav>
                 </div>
@@ -173,14 +195,23 @@ export default function PublicLayout() {
                 </div>
 
                 {/* Main Nav */}
-                <div className="sdp-public-mainnav hidden lg:block">
+                <div className="sdp-public-mainnav hidden lg:block relative text-[#0f172a]">
                     <div className="sdp-public-mainnav-inner">
                         {NAV_LINKS.map((nav, idx) => (
-                            <Link key={idx} to={nav.path || "#"} className={`sdp-navItem ${nav.real ? '' : 'opacity-80'} ${location.pathname === nav.path && nav.path !== '#' ? 'active' : ''}`}>
-                                {nav.icon && <HomeIcon size={16} className="mb-[2px]" />}
-                                {nav.label}
-                                {nav.dropdown && <ChevronDown size={14} className="opacity-60 ml-0.5" />}
-                            </Link>
+                            nav.label === "Admissions" ? (
+                                <div key={idx} className="relative group/nav h-full flex items-center shrink-0">
+                                    <Link to={nav.path} className={`sdp-navItem ${location.pathname.startsWith('/admissions') ? 'active' : ''}`}>
+                                        {nav.label} <ChevronDown size={14} className="opacity-60 ml-0.5 group-hover/nav:rotate-180 transition-transform" />
+                                    </Link>
+                                    <AdmissionsMegaMenu />
+                                </div>
+                            ) : (
+                                <Link key={idx} to={nav.path || "#"} className={`sdp-navItem ${nav.real ? '' : 'opacity-80'} ${location.pathname === nav.path && nav.path !== '#' ? 'active' : ''}`}>
+                                    {nav.icon && <HomeIcon size={16} className="mb-[2px]" />}
+                                    {nav.label}
+                                    {nav.dropdown && <ChevronDown size={14} className="opacity-60 ml-0.5" />}
+                                </Link>
+                            )
                         ))}
                     </div>
                 </div>
