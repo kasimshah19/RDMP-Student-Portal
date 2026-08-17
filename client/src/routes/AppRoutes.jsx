@@ -39,6 +39,7 @@ import AdminTeacherLayout from '../components/layout/AdminTeacherLayout';
 import StudentLayout from '../components/layout/StudentLayout';
 import PublicLayout from '../components/layout/PublicLayout';
 import Home from '../pages/public/Home';
+import About from '../pages/public/About';
 import UnderConstruction from '../pages/shared/UnderConstruction';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -71,7 +72,7 @@ const AppRoutes = () => {
             {/* Public */}
             <Route element={<PublicLayout />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<UnderConstruction />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/admissions" element={<UnderConstruction />} />
                 <Route path="/academics" element={<UnderConstruction />} />
                 <Route path="/students" element={<UnderConstruction />} />
