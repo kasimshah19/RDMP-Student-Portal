@@ -166,7 +166,7 @@ export default function PublicLayout() {
                                 <User size={16} /> Login
                             </Link>
                             <Link to={isAuthenticated && user ? `/${user.role}/dashboard` : "/login"}
-                                className="sdp-btn-primary-solid hidden xs:block">
+                                className="sdp-btn-primary-solid hidden sm:block pointer-events-auto">
                                 Student Portal
                             </Link>
                         </div>
