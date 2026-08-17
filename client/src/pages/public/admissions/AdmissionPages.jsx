@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronRight, ArrowRight, Phone, Mail, ExternalLink, Calendar as CalendarIcon, CheckSquare, Clock } from 'lucide-react';
+import { ChevronRight, ArrowRight, Phone, Mail, ExternalLink, Calendar as CalendarIcon, CheckSquare, Clock, GraduationCap, BookOpen, CheckCircle2, Check, MapPin } from 'lucide-react';
 import { admissionConfig } from './admissionConfig';
 
 const Layout = ({ title, subtitle, children }) => {
