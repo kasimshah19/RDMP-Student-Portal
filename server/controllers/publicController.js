@@ -3,6 +3,7 @@ const Teacher = require('../models/Teacher');
 const Division = require('../models/Division');
 const Attendance = require('../models/Attendance');
 const Exam = require('../models/Exam');
+const Notice = require('../models/Notice');
 
 // @desc    Get public portal statistics
 // @route   GET /api/public/stats
@@ -50,6 +51,25 @@ exports.getStats = async (req, res) => {
         });
     } catch (error) {
         console.error('Error fetching public stats:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server Error'
+        });
+    }
+};
+
+// @desc    Get public active notices
+// @route   GET /api/public/notices
+// @access  Public
+exports.getPublicNotices = async (req, res) => {
+    try {
+        const notices = await Notice.find({ status: 'active' }).sort({ createdAt: -1 }).limit(4);
+        res.status(200).json({
+            success: true,
+            data: notices
+        });
+    } catch (error) {
+        console.error('Error fetching public notices:', error);
         res.status(500).json({
             success: false,
             message: 'Server Error'

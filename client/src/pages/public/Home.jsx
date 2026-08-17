@@ -56,7 +56,7 @@ export default function Home() {
             }
 
             try {
-                const noticesRes = await api.get('/notices');
+                const noticesRes = await api.get('/public/notices');
                 if (noticesRes.data?.success && noticesRes.data.data.length > 0) {
                     setNotices(noticesRes.data.data.slice(0, 4));
                 }
