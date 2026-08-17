@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
     ChevronRight, BookOpen, Clock, AlertCircle,
-    Calendar, CheckCircle2, ChevronDown, Download, Lock
+    Calendar, CheckCircle2, ChevronDown, Download, Lock, FileCheck
 } from 'lucide-react';
 import { academicConfig } from './academicConfig';
 
