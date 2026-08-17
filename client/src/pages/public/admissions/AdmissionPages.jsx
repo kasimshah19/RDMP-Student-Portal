@@ -39,6 +39,35 @@ const Layout = ({ title, subtitle, children }) => {
                     {children}
                 </div>
             </main>
+
+            {/* Global Admissions Footer CTA Banner */}
+            <div className="max-w-[1000px] mx-auto px-6 lg:px-8 mt-12">
+                <div className="bg-[#0f172a] rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-8">
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500 rounded-full blur-[100px] transform translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-500 rounded-full blur-[80px] transform -translate-x-1/2 translate-y-1/2 opacity-20 pointer-events-none"></div>
+
+                    <div className="relative z-10 text-center md:text-left flex-1">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 text-xs font-bold tracking-wider mb-4 border border-slate-700">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                            Admissions Open
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 tracking-tight">Need Admission Assistance?</h3>
+                        <p className="text-slate-400 text-sm md:text-base max-w-lg mx-auto md:mx-0">
+                            Our dedicated admission office is here to guide you through the process, documentation, and eligibility queries.
+                        </p>
+                    </div>
+
+                    <div className="relative z-10 flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+                        <Link to="/admissions/contact" className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2">
+                            <Phone size={18} /> Contact Office
+                        </Link>
+                        <Link to="/admissions/faqs" className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-xl transition-all border border-slate-700 flex items-center justify-center">
+                            Read FAQs
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
