@@ -26,7 +26,8 @@ const corsOptions = {
             'http://localhost:3000'
         ].filter(Boolean);
 
-        if (!origin || allowedOrigins.includes(origin)) {
+        // Allow allowedOrigins or any Vercel domain for seamless preview/production deployments
+        if (!origin || allowedOrigins.includes(origin) || (origin && origin.endsWith('vercel.app'))) {
             callback(null, true);
         } else {
             callback(new Error('Blocked by Strict CORS Policy'));
