@@ -97,8 +97,8 @@ export default function Home() {
                 </div>
 
                 <div className="relative max-w-[1300px] mx-auto px-6 h-full flex flex-col justify-center z-10 w-full lg:w-2/3">
-                    <span className="text-[#2563EB] text-[11px] font-bold tracking-wider uppercase mb-3">WELCOME TO OUR COLLEGE</span>
-                    <h1 className="text-4xl lg:text-5xl font-bold mt-2 mb-4 leading-tight text-[#0f172a] max-w-2xl">
+                    <span className="text-[#2563EB] text-[11px] font-bold tracking-wider uppercase mb-3 mt-12 lg:mt-0">WELCOME TO OUR COLLEGE</span>
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 mb-4 leading-tight text-[#0f172a] max-w-2xl">
                         Empowering Education, <br />
                         Enriching Lives Since 1929
                     </h1>
@@ -199,7 +199,7 @@ export default function Home() {
                 </div>
 
                 {/* 3. Stats Band */}
-                <div className="bg-[#111827] rounded-xl flex flex-wrap lg:grid lg:grid-cols-5 text-white py-6 px-4 divide-y lg:divide-y-0 lg:divide-x divide-gray-700 mb-12 shadow-lg">
+                <div className="bg-[#111827] rounded-xl flex flex-col sm:flex-row flex-wrap lg:flex-nowrap text-white py-6 px-4 sm:divide-x divide-gray-700 divide-y sm:divide-y-0 mb-12 shadow-lg gap-y-4 sm:gap-y-0">
                     {[
                         { icon: Users, count: stats.totalStudents, label: 'Total Students' },
                         { icon: BookOpen, count: stats.totalTeachers, label: 'Teachers' },
@@ -207,7 +207,7 @@ export default function Home() {
                         { icon: ClipboardCheck, count: `${stats.attendancePercentage}%`, label: 'Attendance Today' },
                         { icon: Calendar, count: stats.upcomingExams, label: 'Upcoming Exams' }
                     ].map((stat, idx) => (
-                        <div key={idx} className="w-full lg:w-auto py-3 lg:py-0 flex items-center justify-center gap-4">
+                        <div key={idx} className="w-full sm:w-1/3 lg:w-full py-2 sm:py-0 flex items-center justify-center gap-4">
                             <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                                 <stat.icon size={20} className="text-blue-200" />
                             </div>
@@ -326,12 +326,12 @@ export default function Home() {
                     </div>
 
                     {/* Quick Access Blocks */}
-                    <div className="flex flex-col gap-4">
-                        <div className="bg-[#1e3a8a] text-white rounded-xl p-5 flex gap-4 h-1/2 items-center relative overflow-hidden transition-transform hover:-translate-y-1 shadow-sm cursor-pointer border border-[#1e3a8a]">
+                    <div className="flex flex-col gap-4 h-full">
+                        <div className="bg-[#1e3a8a] text-white rounded-xl p-5 flex flex-col md:flex-row md:items-center gap-4 flex-1 relative overflow-hidden transition-transform hover:-translate-y-1 shadow-sm cursor-pointer border border-[#1e3a8a]">
                             <div className="absolute right-0 top-0 opacity-[0.03] scale-150 -translate-y-4 translate-x-4">
                                 <Calendar size={120} />
                             </div>
-                            <div className="w-[50px] h-[50px] rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                            <div className="w-[50px] h-[50px] rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0 z-10 hidden md:flex">
                                 <Calendar size={24} className="text-white" />
                             </div>
                             <div className="z-10">
@@ -340,12 +340,12 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div id="admissions" className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl p-5 flex gap-4 h-1/2 items-center transition-transform hover:-translate-y-1 shadow-sm cursor-pointer scroll-mt-24">
-                            <div className="w-[50px] h-[50px] rounded-lg bg-[#22C55E] text-white flex items-center justify-center shrink-0 shadow-md shadow-green-200">
+                        <div id="admissions" className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl p-5 flex flex-col md:flex-row md:items-center gap-4 flex-1 transition-transform hover:-translate-y-1 shadow-sm cursor-pointer scroll-mt-24">
+                            <div className="w-[50px] h-[50px] rounded-lg bg-[#22C55E] text-white flex items-center justify-center shrink-0 shadow-md shadow-green-200 hidden md:flex">
                                 <ClipboardCheck size={24} />
                             </div>
                             <div>
-                                <h3 className="font-bold text-[15px] text-gray-900 mb-0.5 leading-tight">Online Admission<br />2026-27</h3>
+                                <h3 className="font-bold text-[15px] text-gray-900 mb-0.5 leading-tight">Online Admission<br className="hidden md:block" /> 2026-27</h3>
                                 <span className="text-[10px] font-bold text-[#16A34A] uppercase tracking-wider block mb-1">Now Open</span>
                                 <div className="text-[12px] font-bold flex items-center gap-1 text-[#2563EB] hover:text-[#1D4ED8] transition-colors">Apply Online <ArrowRight size={14} /></div>
                             </div>

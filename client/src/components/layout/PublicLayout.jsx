@@ -131,21 +131,21 @@ export default function PublicLayout() {
                 {/* Top Bar */}
                 <div className="sdp-public-topnav flex-col lg:flex-row py-4 lg:py-5">
                     {/* Brand */}
-                    <div className="flex items-center gap-4">
-                        <div className="w-[52px] h-[52px] rounded-full border border-gray-300 flex items-center justify-center shrink-0 overflow-hidden">
+                    <div className="flex items-center gap-3 md:gap-4">
+                        <div className="w-[44px] h-[44px] md:w-[52px] md:h-[52px] rounded-full border border-gray-300 flex items-center justify-center shrink-0 overflow-hidden">
                             {/* Dummy Seal Logo */}
-                            <svg className="w-10 h-10 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <path d="M12 16v-4"></path>
                                 <path d="M12 8h.01"></path>
                             </svg>
                         </div>
                         <div>
-                            <h1 className="text-[17px] font-bold text-gray-900 leading-tight">
+                            <h1 className="text-[13px] sm:text-[15px] md:text-[17px] font-bold text-gray-900 leading-tight">
                                 Raul Daultsinhji Multipurpose <br className="hidden lg:block" />
                                 High School &amp; Jr. College of Science
                             </h1>
-                            <p className="text-[12.5px] text-gray-600 mt-1">Dondaicha, Dist. Dhule, Maharashtra &nbsp;<span className="text-gray-400">|</span>&nbsp; Est. 1929</p>
+                            <p className="text-[10px] sm:text-[11px] md:text-[12.5px] text-gray-600 mt-0.5 md:mt-1">Dondaicha, Dist. Dhule, Maharashtra <span className="hidden sm:inline">&nbsp;<span className="text-gray-400">|</span>&nbsp; Est. 1929</span></p>
                         </div>
                     </div>
 
