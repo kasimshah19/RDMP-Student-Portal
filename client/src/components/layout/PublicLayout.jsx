@@ -17,13 +17,13 @@ export default function PublicLayout() {
 
     const NAV_LINKS = [
         { label: "Home", path: "/", real: true, icon: true },
-        { label: "About Us", path: "#" },
-        { label: "Admissions", dropdown: true, path: "#" },
-        { label: "Academics", dropdown: true, path: "#" },
-        { label: "Students", dropdown: true, path: "#" },
+        { label: "About Us", path: "/#about", real: true },
+        { label: "Admissions", dropdown: true, path: "/#admissions", real: true },
+        { label: "Academics", dropdown: true, path: "/#academics", real: true },
+        { label: "Students", dropdown: true, path: "/#students", real: true },
         { label: "Notices", path: "/notices", real: true },
-        { label: "Gallery", path: "#" },
-        { label: "Contact Us", path: "#" }
+        { label: "Gallery", path: "/#gallery", real: true },
+        { label: "Contact Us", path: "/#footer", real: true } // Linking to footer for contact
     ];
 
     return (
@@ -191,7 +191,7 @@ export default function PublicLayout() {
             </main>
 
             {/* Footer */}
-            <footer className="sdp-footer">
+            <footer id="footer" className="sdp-footer">
                 <div className="sdp-footer-grid mb-12">
                     <div>
                         <div className="flex items-center gap-3 mb-6">
@@ -224,10 +224,10 @@ export default function PublicLayout() {
                         <h3 className="font-semibold mb-5 text-[14px]">Quick Links</h3>
                         <ul className="space-y-3 text-[13px] opacity-75 flex flex-col">
                             <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                            <Link to="#" className="hover:text-white transition-colors">About Us</Link>
-                            <Link to="#" className="hover:text-white transition-colors">Admissions</Link>
-                            <Link to="#" className="hover:text-white transition-colors">Academics</Link>
-                            <Link to="#" className="hover:text-white transition-colors">Students</Link>
+                            <Link to="/#about" className="hover:text-white transition-colors">About Us</Link>
+                            <Link to="/#admissions" className="hover:text-white transition-colors">Admissions</Link>
+                            <Link to="/#academics" className="hover:text-white transition-colors">Academics</Link>
+                            <Link to="/#students" className="hover:text-white transition-colors">Students</Link>
                         </ul>
                     </div>
 
