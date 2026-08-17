@@ -9,61 +9,90 @@ const Layout = ({ title, subtitle, children }) => {
     }, []);
 
     return (
-        <div className="bg-slate-50 min-h-screen font-sans pb-24">
+        <div className="bg-[#F8FAFC] min-h-screen font-sans pb-24">
             {/* Header Hero */}
-            <section className="bg-[#0f172a] text-white pt-10 pb-16 px-6 lg:px-8 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10 pointer-events-none">
-                    <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
-                        <polygon fill="currentColor" points="100,0 100,100 0,100" />
-                    </svg>
-                </div>
-                <div className="max-w-[1000px] mx-auto relative z-10">
-                    <nav className="flex items-center text-sm font-medium text-slate-300 mb-6 opacity-90">
-                        <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                        <ChevronRight size={16} className="mx-2 opacity-50" />
-                        <Link to="/admissions" className="hover:text-white transition-colors">Admissions</Link>
-                        {title !== admissionConfig.overview.title && (
-                            <>
-                                <ChevronRight size={16} className="mx-2 opacity-50" />
-                                <span className="text-white font-semibold">{title}</span>
-                            </>
-                        )}
-                    </nav>
-                    <h1 className="text-3xl lg:text-4xl font-extrabold mb-4">{title}</h1>
-                    <p className="text-lg text-slate-300 max-w-2xl">{subtitle}</p>
+            <section className="bg-[#0f172a] text-white pt-16 pb-24 relative overflow-hidden">
+                {/* Subtle Background Pattern */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+
+                <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <div className="lg:w-3/5 w-full">
+                        <nav className="flex items-center text-xs font-semibold tracking-wide text-slate-400 mb-8 uppercase">
+                            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+                            <ChevronRight size={14} className="mx-2 opacity-50" />
+                            <Link to="/admissions" className="hover:text-white transition-colors">Admissions</Link>
+                            {title !== admissionConfig.overview.title && (
+                                <>
+                                    <ChevronRight size={14} className="mx-2 opacity-50" />
+                                    <span className="text-white">{title}</span>
+                                </>
+                            )}
+                        </nav>
+
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-blue-300 text-xs font-bold tracking-wider mb-6">
+                            ADMISSIONS &bull; 2026–27
+                        </div>
+
+                        <h1 className="text-4xl lg:text-5xl font-extrabold mb-5 tracking-tight">{title}</h1>
+                        <p className="text-lg text-slate-300 max-w-2xl leading-relaxed">
+                            {subtitle}
+                            {title === admissionConfig.overview.title && (
+                                <span className="block mt-2 text-slate-400">Guidance, requirements, important dates and college information — all in one place.</span>
+                            )}
+                        </p>
+                    </div>
+
+                    {/* Right side Abstract Academic Visual */}
+                    <div className="hidden lg:block lg:w-2/5 relative">
+                        <div className="absolute right-0 top-1/2 -translate-y-[50%] w-[400px] h-[400px]">
+                            {/* Abstract Geometric Academic Illustration */}
+                            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full opacity-60">
+                                <circle cx="200" cy="200" r="180" stroke="#1e293b" strokeWidth="2" strokeDasharray="4 8" />
+                                <circle cx="200" cy="200" r="140" stroke="#334155" strokeWidth="1" />
+                                <path d="M120 200 L200 120 L280 200 L200 280 Z" stroke="#3b82f6" strokeWidth="2" fill="rgba(59, 130, 246, 0.1)" strokeLinejoin="round" />
+                                <rect x="170" y="170" width="60" height="60" rx="8" stroke="#94a3b8" strokeWidth="2" transform="rotate(45 200 200)" />
+                                <circle cx="200" cy="200" r="8" fill="#60a5fa" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <main className="max-w-[1000px] mx-auto px-6 lg:px-8 -mt-6">
-                <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm relative z-20">
+            <main className="max-w-[1280px] mx-auto px-6 lg:px-10 -mt-10 relative z-20">
+                <div className="bg-white rounded-[24px] p-8 lg:p-12 border border-[#E2E8F0] shadow-[0_4px_20px_rgba(15,23,42,0.03)]">
                     {children}
                 </div>
             </main>
 
             {/* Global Admissions Footer CTA Banner */}
-            <div className="max-w-[1000px] mx-auto px-6 lg:px-8 mt-12">
-                <div className="bg-[#0f172a] rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-[1280px] mx-auto px-6 lg:px-10 mt-16">
+                <div className="bg-[#0f172a] rounded-[24px] p-8 md:p-12 shadow-[0_12px_40px_rgba(15,23,42,0.12)] relative overflow-hidden border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-8">
                     {/* Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500 rounded-full blur-[100px] transform translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none"></div>
-                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-500 rounded-full blur-[80px] transform -translate-x-1/2 translate-y-1/2 opacity-20 pointer-events-none"></div>
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-600 rounded-full blur-[100px] transform translate-x-1/2 -translate-y-1/2 opacity-15 pointer-events-none"></div>
 
-                    <div className="relative z-10 text-center md:text-left flex-1">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 text-xs font-bold tracking-wider mb-4 border border-slate-700">
-                            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                            Admissions Open
+                    <div className="relative z-10 text-center md:text-left flex-1 flex gap-6 items-start">
+                        <div className="hidden md:flex w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 items-center justify-center shrink-0">
+                            <Phone className="text-blue-400" size={24} />
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 tracking-tight">Need Admission Assistance?</h3>
-                        <p className="text-slate-400 text-sm md:text-base max-w-lg mx-auto md:mx-0">
-                            Our dedicated admission office is here to guide you through the process, documentation, and eligibility queries.
-                        </p>
+                        <div>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-[11px] font-bold tracking-widest uppercase mb-4 border border-slate-700">
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                                Admission Support
+                            </div>
+                            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 tracking-tight">Need Help With Your Admission?</h3>
+                            <p className="text-slate-400 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed">
+                                Our admission office is available to assist students and parents with admission information, documents and eligibility-queries.
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="relative z-10 flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-                        <Link to="/admissions/contact" className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2">
-                            <Phone size={18} /> Contact Office
+                    <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
+                        <Link to="/admissions/contact" className="px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2">
+                            Contact Admission Office
                         </Link>
-                        <Link to="/admissions/faqs" className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-xl transition-all border border-slate-700 flex items-center justify-center">
-                            Read FAQs
+                        <Link to="/admissions/faqs" className="px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl transition-all border border-slate-700 flex items-center justify-center">
+                            View FAQs
                         </Link>
                     </div>
                 </div>
@@ -74,28 +103,58 @@ const Layout = ({ title, subtitle, children }) => {
 
 export const AdmissionsOverview = () => (
     <Layout title={admissionConfig.overview.title} subtitle={admissionConfig.overview.subtitle}>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-            {admissionConfig.overview.cards.map((card, i) => (
-                <Link key={i} to={card.path} className="p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-blue-50/50 hover:border-blue-200 transition-colors group">
-                    <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-700 transition-colors">
-                        <card.icon size={24} />
-                    </div>
-                    <h3 className="font-bold text-[#0f172a] text-lg mb-1">{card.title}</h3>
-                    <p className="text-sm text-slate-500">{card.desc}</p>
-                </Link>
-            ))}
+        <div className="mb-10 text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0f172a] mb-3 tracking-tight">Everything You Need for Admission</h2>
+            <p className="text-[#64748B] text-base">Access essential admission information, requirements and guidance for the academic year {admissionConfig.institute.academicYear}.</p>
         </div>
 
-        <div className="mt-12 p-8 bg-blue-600 text-white rounded-2xl border border-blue-500 text-center shadow-lg shadow-blue-500/20">
-            <h3 className="text-2xl font-bold mb-3">Begin Your Application Journey</h3>
-            <p className="text-blue-100 mb-6 max-w-lg mx-auto">Access the formal centralized portal for Class 11th, or standard continuation norms for Class 12th.</p>
-            <div className="flex justify-center gap-4 flex-wrap">
-                <Link to="/admissions/class-11" className="px-6 py-3 bg-white text-blue-600 font-bold rounded-xl transition-all hover:bg-blue-50 leading-none flex items-center gap-2">
-                    Class 11 Admission Info <ArrowRight size={18} />
-                </Link>
-                <Link to="/admissions/contact" className="px-6 py-3 border border-white/20 hover:bg-white/10 text-white font-medium rounded-xl transition-all leading-none">
-                    Contact Admission Office
-                </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {admissionConfig.overview.cards.map((card, i) => {
+                const isFeatured = card.id === '11';
+                return (
+                    <Link key={i} to={card.path} className={`p-8 rounded-[18px] border transition-all duration-250 group relative hover:-translate-y-1 block ${isFeatured
+                        ? 'bg-[#F8FAFF] border-blue-200 hover:shadow-[0_12px_32px_rgba(37,99,235,0.12)]'
+                        : 'bg-white border-[#E2E8F0] shadow-[0_4px_20px_rgba(15,23,42,0.02)] hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)]'
+                        }`}>
+                        {isFeatured && (
+                            <div className="absolute top-6 right-6 px-2.5 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-widest rounded-full">
+                                FYJC
+                            </div>
+                        )}
+                        <div className={`w-[44px] h-[44px] rounded-xl flex items-center justify-center mb-6 transition-colors duration-250 ${isFeatured ? 'bg-blue-600 text-white shadow-md' : 'bg-[#F1F5F9] text-[#0f172a] group-hover:bg-blue-50 group-hover:text-blue-600'
+                            }`}>
+                            <card.icon size={20} strokeWidth={2.5} />
+                        </div>
+                        <h3 className="font-bold text-[#0f172a] text-[17px] mb-2">{card.title}</h3>
+                        <p className={`text-sm mb-6 ${isFeatured ? 'text-blue-900/70' : 'text-[#64748B]'}`}>{card.desc}</p>
+
+                        <div className={`text-sm font-bold flex items-center transition-all duration-250 ${isFeatured ? 'text-blue-600' : 'text-slate-400 group-hover:text-blue-600'
+                            }`}>
+                            {isFeatured ? 'Explore Admission' : 'View Details'}
+                            <ArrowRight size={16} className="ml-1 opacity-0 -translate-x-2 transition-all duration-250 group-hover:opacity-100 group-hover:translate-x-1" />
+                        </div>
+                    </Link>
+                );
+            })}
+        </div>
+
+        <div className="mt-16 p-10 md:p-12 bg-[#0f172a] text-white rounded-[24px] border border-[#1e293b] text-center shadow-[0_16px_48px_rgba(15,23,42,0.15)] relative overflow-hidden">
+            {/* Subtle Line Pattern */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+
+            <div className="relative z-10">
+                <h3 className="text-2xl md:text-[28px] font-extrabold mb-4 tracking-tight text-white">Ready to Begin Your Admission Journey?</h3>
+                <p className="text-slate-400 mb-8 text-base max-w-xl mx-auto leading-relaxed">
+                    Find the right admission information, understand the requirements and get assistance from the college office.
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <Link to="/admissions/class-11" className="px-7 py-3.5 bg-blue-600 font-bold text-white rounded-xl transition-all hover:bg-blue-500 hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2">
+                        View Class 11 Admission Info <ArrowRight size={18} />
+                    </Link>
+                    <Link to="/admissions/contact" className="px-7 py-3.5 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl transition-all border border-white/10 flex items-center justify-center">
+                        Contact Admission Office
+                    </Link>
+                </div>
             </div>
         </div>
     </Layout>

@@ -5,6 +5,7 @@ import {
     Menu, X, ChevronDown, MapPin, Phone, Mail, Home as HomeIcon, User
 } from "lucide-react";
 import AdmissionsMegaMenu, { ADMISSION_MENU_ITEMS } from './AdmissionsMegaMenu';
+import { admissionConfig } from '../../pages/public/admissions/admissionConfig';
 
 export default function PublicLayout() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -222,79 +223,96 @@ export default function PublicLayout() {
             </main>
 
             {/* Footer */}
-            <footer id="footer" className="sdp-footer">
-                <div className="sdp-footer-grid mb-12">
-                    <div>
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center shrink-0">
-                                <svg className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                </svg>
+            <footer className="bg-[#0f172a] border-t border-[#1e293b] pt-16 pb-6 text-slate-300 relative overflow-hidden">
+                {/* Very subtle glow effect */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
+
+                <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
+                        {/* Institution Info - Takes up 4 columns on large */}
+                        <div className="lg:col-span-4 pr-4">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-12 h-12 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center shrink-0">
+                                    <svg className="w-6 h-6 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8m0 0V3m0 10h8.25m-8.25 0H3.75" />
+                                    </svg>
+                                </div>
+                                <h2 className="text-[16px] font-bold leading-tight text-white tracking-tight">
+                                    Raul Daultsinhji Multipurpose<br />High School &amp; Jr. College of Science
+                                </h2>
                             </div>
-                            <h2 className="text-[15px] font-bold leading-snug">
-                                Raul Daultsinhji Multipurpose<br />High School &amp; Jr. College of Science
-                            </h2>
+                            <p className="text-sm text-slate-400 mb-6 leading-relaxed max-w-xs">
+                                Dondaicha, Dist. Dhule, Maharashtra<br />Established in 1929
+                            </p>
+                            <div className="flex gap-4">
+                                <a href="#" className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-700 transition-all duration-300">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                </a>
+                                <a href="#" className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-700 transition-all duration-300">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                </a>
+                                <a href="#" className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-700 transition-all duration-300">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                                </a>
+                            </div>
                         </div>
-                        <p className="text-[13px] opacity-75 mb-6 leading-relaxed">
-                            Dondaicha, Dist. Dhule, Maharashtra<br />Est. 1929
+
+                        {/* Quick Links - Takes up 2 columns on large */}
+                        <div className="lg:col-span-2">
+                            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Quick Links</h3>
+                            <ul className="space-y-3 text-sm text-slate-400 flex flex-col">
+                                <Link to="/" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Home</Link>
+                                <Link to="/about" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">About Us</Link>
+                                <Link to="/admissions" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Admissions</Link>
+                                <Link to="/academics" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Academics</Link>
+                                <Link to="/students" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Students</Link>
+                            </ul>
+                        </div>
+
+                        {/* Important Links - Takes up 3 columns on large */}
+                        <div className="lg:col-span-3">
+                            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Important Links</h3>
+                            <ul className="space-y-3 text-sm text-slate-400 flex flex-col">
+                                <Link to="/calendar" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Academic Calendar</Link>
+                                <Link to="/fee-structure" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Fee Structure</Link>
+                                <Link to="/downloads" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Downloads &amp; Forms</Link>
+                                <Link to="/exam-timetable" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Exam Timetable</Link>
+                                <Link to="/results" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Results &amp; Notices</Link>
+                            </ul>
+                        </div>
+
+                        {/* Contact Us - Takes up 3 columns on large */}
+                        <div className="lg:col-span-3">
+                            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Contact Us</h3>
+                            <ul className="space-y-4 text-sm text-slate-400">
+                                <li className="flex items-start gap-4 group">
+                                    <div className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:bg-blue-600/20 group-hover:border-blue-500/30 group-hover:text-blue-400 transition-colors">
+                                        <MapPin size={14} />
+                                    </div>
+                                    <span className="leading-relaxed pt-1">Dondaicha, Dist. Dhule,<br />Maharashtra - 425408</span>
+                                </li>
+                                <li className="flex items-center gap-4 group">
+                                    <div className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:bg-blue-600/20 group-hover:border-blue-500/30 group-hover:text-blue-400 transition-colors">
+                                        <Phone size={14} />
+                                    </div>
+                                    <span>(02566) 244 123</span>
+                                </li>
+                                <li className="flex items-center gap-4 group">
+                                    <div className="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:bg-blue-600/20 group-hover:border-blue-500/30 group-hover:text-blue-400 transition-colors">
+                                        <Mail size={14} />
+                                    </div>
+                                    <span>rdmpcollege@gmail.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="border-t border-[#1e293b] pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                        <p>© {admissionConfig.institute.academicYear.substring(0, 4)} Raul Daultsinhji Multipurpose High School &amp; Jr. College of Science. All Rights Reserved.</p>
+                        <p className="flex items-center gap-1 font-medium tracking-wide">
+                            Designed &amp; Developed with <span className="text-red-500 mx-0.5">&hearts;</span>
                         </p>
-                        <div className="flex gap-4">
-                            <a href="#" className="opacity-70 hover:opacity-100 transition-opacity">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                            </a>
-                            <a href="#" className="opacity-70 hover:opacity-100 transition-opacity">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                            </a>
-                            <a href="#" className="opacity-70 hover:opacity-100 transition-opacity">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-                            </a>
-                        </div>
                     </div>
-
-                    <div>
-                        <h3 className="font-semibold mb-5 text-[14px]">Quick Links</h3>
-                        <ul className="space-y-3 text-[13px] opacity-75 flex flex-col">
-                            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                            <Link to="/about" className="hover:text-white transition-colors">About Us</Link>
-                            <Link to="/admissions" className="hover:text-white transition-colors">Admissions</Link>
-                            <Link to="/academics" className="hover:text-white transition-colors">Academics</Link>
-                            <Link to="/students" className="hover:text-white transition-colors">Students</Link>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 className="font-semibold mb-5 text-[14px]">Important Links</h3>
-                        <ul className="space-y-3 text-[13px] opacity-75 flex flex-col">
-                            <Link to="/calendar" className="hover:text-white transition-colors">Academic Calendar</Link>
-                            <Link to="/fee-structure" className="hover:text-white transition-colors">Fee Structure</Link>
-                            <Link to="/downloads" className="hover:text-white transition-colors">Downloads</Link>
-                            <Link to="/exam-timetable" className="hover:text-white transition-colors">Exam Timetable</Link>
-                            <Link to="/results" className="hover:text-white transition-colors">Results</Link>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 className="font-semibold mb-5 text-[14px]">Contact Us</h3>
-                        <ul className="space-y-4 text-[13px] opacity-75">
-                            <li className="flex items-start gap-3">
-                                <MapPin size={16} className="shrink-0 mt-0.5" />
-                                <span>Dondaicha, Dist. Dhule,<br />Maharashtra - 425408</span>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <Phone size={16} className="shrink-0" />
-                                <span>(02566) 244 123</span>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <Mail size={16} className="shrink-0" />
-                                <span>rdmpcollege@gmail.com</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="max-w-[1300px] mx-auto border-t border-white/10 pt-6 pb-2 flex flex-col md:flex-row justify-between items-center text-[12px] opacity-50">
-                    <p>© 2026 Raul Daultsinhji Multipurpose High School &amp; Jr. College of Science. All Rights Reserved.</p>
-                    <p className="mt-2 md:mt-0 flex items-center gap-1">Designed &amp; Developed with <span className="text-red-400">♥</span></p>
                 </div>
             </footer>
         </div>
