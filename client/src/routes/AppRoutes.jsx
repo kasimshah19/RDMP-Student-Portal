@@ -45,6 +45,11 @@ import {
     AdmissionProcess, Eligibility, DocumentsRequired,
     ImportantDates, FeesPayment, FAQs, ContactAdmission
 } from '../pages/public/admissions/AdmissionPages';
+import {
+    AcademicOverview, Class11Academics, Class12Academics,
+    SubjectsCurriculum, AcademicCalendar, ClassTimetable,
+    Examinations, ResultsMarksheets, AcademicNotices
+} from '../pages/public/academics/AcademicPages';
 import UnderConstruction from '../pages/shared/UnderConstruction';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -91,7 +96,16 @@ const AppRoutes = () => {
                 <Route path="/admissions/faqs" element={<FAQs />} />
                 <Route path="/admissions/contact" element={<ContactAdmission />} />
 
-                <Route path="/academics" element={<UnderConstruction />} />
+                {/* Academics Module */}
+                <Route path="/academics" element={<AcademicOverview />} />
+                <Route path="/academics/class-11" element={<Class11Academics />} />
+                <Route path="/academics/class-12" element={<Class12Academics />} />
+                <Route path="/academics/curriculum" element={<SubjectsCurriculum />} />
+                <Route path="/academics/calendar" element={<AcademicCalendar />} />
+                <Route path="/academics/timetable" element={<ClassTimetable />} />
+                <Route path="/academics/examinations" element={<Examinations />} />
+                <Route path="/academics/results" element={<ResultsMarksheets />} />
+                <Route path="/academics/notices" element={<AcademicNotices />} />
                 <Route path="/students" element={<UnderConstruction />} />
                 <Route path="/notices" element={<UnderConstruction />} />
                 <Route path="/gallery" element={<UnderConstruction />} />

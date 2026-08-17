@@ -5,6 +5,7 @@ import {
     Menu, X, ChevronDown, MapPin, Phone, Mail, Home as HomeIcon, User
 } from "lucide-react";
 import AdmissionsMegaMenu, { ADMISSION_MENU_ITEMS } from './AdmissionsMegaMenu';
+import { AcademicsMegaMenu, AcademicsMobileMenu } from './AcademicsMegaMenu';
 import { admissionConfig } from '../../pages/public/admissions/admissionConfig';
 
 export default function PublicLayout() {
@@ -32,32 +33,9 @@ export default function PublicLayout() {
     return (
         <div className="sdp-root bg-white min-h-screen flex flex-col font-sans">
             <style>{`
-                .sdp-public-header {}
-                .sdp-public-topnav {
-                    background: white;
-                    padding: 16px 32px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 24px;
-                    max-width: 1440px;
-                    margin: 0 auto;
-                }
-                .sdp-public-mainnav { background: #111827; }
-                .sdp-public-mainnav-inner {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0 24px;
-                    max-width: 1440px;
-                    margin: 0 auto;
-                    height: 54px;
-                    gap: 32px;
-                }
-                
                 .sdp-navItem {
                     color: rgba(255,255,255,0.85);
-                    font-size: 14.5px;
+                    font-size: 14px;
                     font-weight: 500;
                     height: 100%;
                     display: flex;
@@ -99,118 +77,140 @@ export default function PublicLayout() {
                 .sdp-btn-primary-solid:hover { opacity: 0.9; }
 
                 .sdp-mobile-menu {
-                    position: fixed; inset: 0; z-index: 50; transform: translateX(-100%);
-                    transition: transform 200ms ease-out; display: flex; flex-direction: column;
+                    position: fixed; inset: 0; z-index: 500; transform: translateX(-100%);
+                    transition: transform 300ms ease-in-out; display: flex; flex-direction: row;
                 }
                 .sdp-mobile-menu.open { transform: translateX(0); }
-                
-                .sdp-footer { background: #0F172A; color: white; padding: 60px 32px 20px; }
-                .sdp-footer-grid { max-width: 1300px; margin: 0 auto; display: grid; gap: 40px; grid-template-columns: 1fr; }
-                @media (min-width: 768px) { .sdp-footer-grid { grid-template-columns: repeat(2, 1fr); } }
-                @media (min-width: 1024px) { .sdp-footer-grid { grid-template-columns: 1.2fr 1fr 1fr 1.2fr; } }
             `}</style>
 
             {/* Mobile Menu Overlay */}
             <div className={`sdp-mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-                <div className="flex-1 bg-gray-900 text-white p-5">
-                    <div className="flex justify-between items-center mb-8">
-                        <span className="text-lg font-bold">Menu</span>
-                        <button onClick={() => setMobileMenuOpen(false)}><X size={24} /></button>
+                <div className="w-[300px] max-w-[85vw] bg-white h-full shadow-2xl flex flex-col overflow-y-auto">
+                    <div className="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50 shrink-0">
+                        <span className="text-lg font-extrabold text-gray-900 tracking-tight">Menu</span>
+                        <button className="p-1.5 rounded-md text-gray-500 hover:bg-gray-200 transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                            <X size={20} />
+                        </button>
                     </div>
-                    <nav className="flex flex-col gap-4">
+                    {/* Navigation Items */}
+                    <nav className="flex-1 p-5 flex flex-col gap-4">
                         {NAV_LINKS.map((nav, idx) => (
                             nav.label === "Admissions" ? (
                                 <div key={idx} className="flex flex-col gap-2">
-                                    <button onClick={() => setMobileAdmissionsOpen(!mobileAdmissionsOpen)} className={`flex items-center gap-1 text-base font-medium opacity-90 hover:opacity-100 ${location.pathname.startsWith('/admissions') ? 'text-blue-400' : ''}`}>
+                                    <button onClick={() => setMobileAdmissionsOpen(!mobileAdmissionsOpen)} className={`flex items-center gap-2 text-base font-semibold w-full text-left opacity-90 hover:opacity-100 ${location.pathname.startsWith('/admissions') ? 'text-blue-600' : 'text-gray-800'}`}>
                                         {nav.label} <ChevronDown size={14} className={`opacity-60 transition-transform ${mobileAdmissionsOpen ? 'rotate-180' : ''}`} />
                                     </button>
                                     {mobileAdmissionsOpen && (
-                                        <div className="pl-4 flex flex-col gap-3 mt-1 border-l border-white/20">
+                                        <div className="pl-4 flex flex-col gap-3 mt-1 border-l-2 border-slate-100">
                                             {ADMISSION_MENU_ITEMS.map((item, i) => (
-                                                <Link key={i} to={item.path} onClick={() => setMobileMenuOpen(false)} className="text-sm opacity-80 hover:opacity-100">
+                                                <Link key={i} to={item.path} onClick={() => setMobileMenuOpen(false)} className="text-[13px] text-gray-600 hover:text-blue-600 font-medium tracking-wide">
                                                     {item.title}
                                                 </Link>
                                             ))}
-                                            <Link to="/admissions" onClick={() => setMobileMenuOpen(false)} className="text-sm font-semibold text-blue-400 mt-2">
-                                                Start Admission Guidance →
+                                            <Link to="/admissions" onClick={() => setMobileMenuOpen(false)} className="text-[13px] font-bold text-blue-600 mt-2 flex items-center">
+                                                Start Admission Guidance <span className="ml-1">&rarr;</span>
                                             </Link>
                                         </div>
                                     )}
                                 </div>
+                            ) : nav.label === "Academics" ? (
+                                <AcademicsMobileMenu key={idx} closeMobileMenu={() => setMobileMenuOpen(false)} />
                             ) : (
                                 <div key={idx}>
-                                    <Link to={nav.path || "#"} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-1 text-base font-medium opacity-90 hover:opacity-100 ${location.pathname === nav.path && nav.path !== '#' ? 'text-brass' : ''}`}>
+                                    <Link to={nav.path || "#"} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-2 text-base font-semibold opacity-90 hover:opacity-100 ${location.pathname === nav.path && nav.path !== '#' ? 'text-blue-600' : 'text-gray-800'}`}>
+                                        {nav.icon && <HomeIcon size={16} className={location.pathname === nav.path ? 'text-blue-600' : 'text-gray-500'} />}
                                         {nav.label} {nav.dropdown && <ChevronDown size={14} className="opacity-60" />}
                                     </Link>
                                 </div>
                             )
                         ))}
                     </nav>
+                    {/* Application / Portal Actions (Moved inside Mobile drawer for mobile devices) */}
+                    <div className="p-5 border-t border-gray-100 flex flex-col gap-3 bg-gray-50 shrink-0">
+                        <Link to="/login" className="sdp-btn-outline w-full justify-center">
+                            <User size={16} /> Login
+                        </Link>
+                        <Link to={isAuthenticated && user ? `/${user.role}/dashboard` : "/login"}
+                            className="sdp-btn-primary-solid w-full text-center">
+                            Student Portal
+                        </Link>
+                    </div>
                 </div>
-                <div className="bg-black/50 flex-1" onClick={() => setMobileMenuOpen(false)}></div>
+                {/* Drawer Backdrop */}
+                <div className="flex-1 bg-black/60 backdrop-blur-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}></div>
             </div>
 
-            <header className="sdp-public-header border-b border-gray-200 lg:border-none">
+            <header className="bg-white border-b border-gray-200 lg:border-none relative z-40">
                 {/* Top Bar */}
-                <div className="sdp-public-topnav flex-col lg:flex-row py-4 lg:py-5">
+                <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
                     {/* Brand */}
-                    <div className="flex items-center gap-3 md:gap-4">
-                        <div className="w-[44px] h-[44px] md:w-[52px] md:h-[52px] rounded-full border border-gray-300 flex items-center justify-center shrink-0 overflow-hidden">
-                            {/* Dummy Seal Logo */}
-                            <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <div className="flex items-center gap-3 md:gap-4 shrink-1 min-w-0">
+                        <div className="w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] lg:w-[52px] lg:h-[52px] rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+                            <svg className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <path d="M12 16v-4"></path>
                                 <path d="M12 8h.01"></path>
                             </svg>
                         </div>
-                        <div>
-                            <h1 className="text-[13px] sm:text-[15px] md:text-[17px] font-bold text-gray-900 leading-tight">
-                                Raul Daultsinhji Multipurpose <br className="hidden lg:block" />
-                                High School &amp; Jr. College of Science
+                        <div className="min-w-0 pr-2">
+                            <h1 className="text-[14px] sm:text-[15px] lg:text-[17px] font-bold text-gray-900 leading-[1.25] max-w-[200px] sm:max-w-none">
+                                Raul Daultsinhji Multipurpose <br className="hidden sm:block" />
+                                High School &amp; Jr. College
                             </h1>
-                            <p className="text-[10px] sm:text-[11px] md:text-[12.5px] text-gray-600 mt-0.5 md:mt-1">Dondaicha, Dist. Dhule, Maharashtra <span className="hidden sm:inline">&nbsp;<span className="text-gray-400">|</span>&nbsp; Est. 1929</span></p>
+                            <p className="text-[10px] sm:text-[11px] lg:text-[12px] text-gray-500 mt-0.5 truncate max-w-[200px] sm:max-w-none">
+                                Dondaicha, Maharashtra <span className="hidden sm:inline">&nbsp;&bull;&nbsp; Est. 1929</span>
+                            </p>
                         </div>
                     </div>
 
                     {/* Controls */}
-                    <div className="flex items-center gap-5 w-full lg:w-auto justify-between lg:justify-end mt-4 lg:mt-0">
-                        <div className="hidden lg:flex items-center gap-2 cursor-pointer border border-gray-100 px-3 py-1.5 rounded bg-gray-50/50">
-                            <span className="text-xs text-gray-500 font-medium">Academic Year</span>
-                            <span className="text-sm font-semibold text-gray-800">2026–27</span>
-                            <ChevronDown size={14} className="text-gray-500" />
+                    <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                        {/* Desktop Only Content */}
+                        <div className="hidden lg:flex items-center gap-4">
+                            <div className="flex items-center gap-2 cursor-pointer border border-gray-100 px-3 py-1.5 rounded bg-gray-50">
+                                <span className="text-xs text-gray-500 font-medium">Academic Year</span>
+                                <span className="text-sm font-semibold text-gray-800 tracking-wide text-center pt-[1px]">{admissionConfig.institute.academicYear}</span>
+                                <ChevronDown size={14} className="text-gray-500" />
+                            </div>
+                            <div className="w-[1px] h-[24px] bg-gray-200"></div>
+                            <div className="flex items-center gap-3">
+                                <Link to="/login" className="sdp-btn-outline">
+                                    <User size={16} /> Login
+                                </Link>
+                                <Link to={isAuthenticated && user ? `/${user.role}/dashboard` : "/login"}
+                                    className="sdp-btn-primary-solid">
+                                    Student Portal
+                                </Link>
+                            </div>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                            <Link to="/login" className="sdp-btn-outline">
-                                <User size={16} /> Login
-                            </Link>
-                            <Link to={isAuthenticated && user ? `/${user.role}/dashboard` : "/login"}
-                                className="sdp-btn-primary-solid hidden sm:block pointer-events-auto">
-                                Student Portal
-                            </Link>
-                        </div>
-                        <button className="lg:hidden" onClick={() => setMobileMenuOpen(true)}>
-                            <Menu size={24} className="text-gray-800" />
+                        {/* Mobile Hamburger explicitly on right edge */}
+                        <button className="lg:hidden p-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-700 hover:bg-gray-100 transition-colors" aria-label="Open menu" onClick={() => setMobileMenuOpen(true)}>
+                            <Menu size={20} />
                         </button>
                     </div>
                 </div>
 
-                {/* Main Nav */}
-                <div className="sdp-public-mainnav hidden lg:block relative text-[#0f172a]">
-                    <div className="sdp-public-mainnav-inner">
+                {/* Main Nav (Desktop) */}
+                <div className="hidden lg:block bg-[#0f172a] shadow-md border-b border-[#1e293b]">
+                    <div className="max-w-[1280px] mx-auto px-6 lg:px-8 h-[52px] flex items-center justify-center gap-8">
                         {NAV_LINKS.map((nav, idx) => (
                             nav.label === "Admissions" ? (
                                 <div key={idx} className="relative group/nav h-full flex items-center shrink-0">
                                     <Link to={nav.path} className={`sdp-navItem ${location.pathname.startsWith('/admissions') ? 'active' : ''}`}>
-                                        {nav.label} <ChevronDown size={14} className="opacity-60 ml-0.5 group-hover/nav:rotate-180 transition-transform" />
+                                        {nav.label} <ChevronDown size={12} className="opacity-60 ml-0.5 group-hover/nav:rotate-180 transition-transform" />
                                     </Link>
                                     <AdmissionsMegaMenu />
                                 </div>
+                            ) : nav.label === "Academics" ? (
+                                <div key={idx} className="relative h-full flex items-center shrink-0">
+                                    <AcademicsMegaMenu />
+                                </div>
                             ) : (
                                 <Link key={idx} to={nav.path || "#"} className={`sdp-navItem ${nav.real ? '' : 'opacity-80'} ${location.pathname === nav.path && nav.path !== '#' ? 'active' : ''}`}>
-                                    {nav.icon && <HomeIcon size={16} className="mb-[2px]" />}
+                                    {nav.icon && <HomeIcon size={15} className="mb-[1px]" />}
                                     {nav.label}
-                                    {nav.dropdown && <ChevronDown size={14} className="opacity-60 ml-0.5" />}
+                                    {nav.dropdown && <ChevronDown size={12} className="opacity-60 ml-0.5" />}
                                 </Link>
                             )
                         ))}

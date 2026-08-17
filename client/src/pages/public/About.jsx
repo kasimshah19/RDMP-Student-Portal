@@ -147,12 +147,12 @@ const About = () => {
                             <p className="text-lg text-slate-300 leading-relaxed mb-10 max-w-xl">
                                 {aboutConfig.hero.subtitle}
                             </p>
-                            <div className="flex flex-wrap gap-4">
-                                <Link to="/academics" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg transition-all shadow-lg shadow-blue-500/30 flex items-center gap-2 group">
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Link to="/academics" className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg transition-all shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2 group w-full sm:w-auto">
                                     Explore Academics
                                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                 </Link>
-                                <Link to="/admissions" className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-all border border-white/20 backdrop-blur-sm">
+                                <Link to="/admissions" className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-all border border-white/20 backdrop-blur-sm flex justify-center w-full sm:w-auto">
                                     View Admissions
                                 </Link>
                             </div>
@@ -515,11 +515,11 @@ const About = () => {
                             <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                                 Explore admissions, academics and important information about our institution. Start your academic journey with us today.
                             </p>
-                            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                                <Link to="/admissions" className="px-8 py-3.5 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-500/30 flex items-center gap-2">
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <Link to="/admissions" className="px-8 py-3.5 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2 w-full sm:w-auto">
                                     View Admissions <ArrowRight size={18} />
                                 </Link>
-                                <Link to="/contact" className="px-8 py-3.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl transition-all border border-white/20 backdrop-blur-sm">
+                                <Link to="/contact" className="px-8 py-3.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl transition-all border border-white/20 backdrop-blur-sm flex justify-center w-full sm:w-auto">
                                     Contact Us
                                 </Link>
                             </div>

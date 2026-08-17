@@ -82,7 +82,7 @@ export default function Home() {
             `}</style>
 
             {/* 1. Hero Section */}
-            <section className="relative w-full h-[450px] lg:h-[500px] bg-white overflow-hidden border-b border-gray-100">
+            <section className="relative w-full min-h-[450px] lg:min-h-[500px] bg-white overflow-hidden border-b border-gray-100 py-10 lg:py-0">
                 <div className="absolute inset-0 w-full h-full">
                     {/* Background Image on Right */}
                     <div className="absolute right-0 top-0 w-full lg:w-3/4 h-full">
@@ -93,7 +93,7 @@ export default function Home() {
                         />
                     </div>
                     {/* Gradient Overlay fading from left (white) to right (transparent) */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent w-full h-full"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent/30 w-full h-full"></div>
                 </div>
 
                 <div className="relative max-w-[1300px] mx-auto px-6 h-full flex flex-col justify-center z-10 w-full lg:w-2/3">
@@ -106,11 +106,11 @@ export default function Home() {
                         Raul Daultsinhji Multipurpose High School & Jr. College of Science,
                         Dondaicha is committed to providing quality education, discipline and values to shape a better tomorrow.
                     </p>
-                    <div className="flex flex-wrap items-center gap-4">
-                        <a href="#about" className="bg-[#0f172a] text-white px-6 py-2.5 rounded text-sm font-semibold flex items-center gap-2 hover:bg-[#1e293b] transition-colors">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                        <a href="#about" className="bg-[#0f172a] text-white px-6 py-2.5 rounded text-[14px] sm:text-[15px] font-semibold flex items-center justify-center sm:justify-start gap-2 hover:bg-[#1e293b] transition-colors w-full sm:w-auto">
                             About Our College <ArrowRight size={16} />
                         </a>
-                        <Link to="#" className="bg-white border border-[#0f172a] text-[#0f172a] px-6 py-2.5 rounded text-sm font-semibold flex items-center gap-2 hover:bg-gray-50 transition-colors">
+                        <Link to="/admissions" className="bg-white border border-[#0f172a] text-[#0f172a] px-6 py-2.5 rounded text-[14px] sm:text-[15px] font-semibold flex items-center justify-center sm:justify-start gap-2 hover:bg-gray-50 transition-colors w-full sm:w-auto">
                             Admission Information <ArrowRight size={16} />
                         </Link>
                     </div>
@@ -357,7 +357,7 @@ export default function Home() {
                 {/* 6. Our Facilities */}
                 <div className="mb-12">
                     <h2 className="text-[18px] font-bold text-gray-900 text-center mb-6">Our Facilities</h2>
-                    <div className="flex flex-wrap lg:flex-nowrap justify-between gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                         {[
                             { icon: Laptop, title: 'Smart Classrooms', desc: 'Modern classrooms with digital learning infrastructure.', color: 'text-[#3B82F6]', bg: 'bg-[#EFF6FF]' },
                             { icon: Beaker, title: 'Science Laboratories', desc: 'Well-equipped labs for practical learning.', color: 'text-[#22C55E]', bg: 'bg-[#F0FDF4]' },
@@ -365,11 +365,11 @@ export default function Home() {
                             { icon: Monitor, title: 'Computer Lab', desc: 'High-speed computers and internet access.', color: 'text-[#F97316]', bg: 'bg-[#FFF7ED]' },
                             { icon: Award, title: 'Sports & Activities', desc: 'Encouraging sports, NCC, NSS and cultural activities.', color: 'text-[#E11D48]', bg: 'bg-[#FFF1F2]' }
                         ].map((fac, i) => (
-                            <div key={i} className="glass-card p-4 flex gap-3 w-full sm:w-[calc(50%-8px)] lg:w-1/5 items-center lg:items-start text-left lg:flex-col lg:justify-start">
+                            <div key={i} className="glass-card p-4 flex flex-row sm:flex-col items-center sm:items-start text-left gap-3 sm:gap-2">
                                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${fac.bg} ${fac.color}`}>
                                     <fac.icon size={24} strokeWidth={1.5} />
                                 </div>
-                                <div>
+                                <div className="flex-1 min-w-0">
                                     <h3 className="font-bold text-[13px] text-gray-900 mb-1 lg:mt-2">{fac.title}</h3>
                                     <p className="text-[11px] text-gray-500 leading-snug">{fac.desc}</p>
                                 </div>
@@ -448,25 +448,25 @@ export default function Home() {
                             "https://images.unsplash.com/photo-1524901548305-08eeddc35080?w=400&q=80",
                             "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&q=80"
                         ].map((src, i) => (
-                            <div key={i} className="w-[200px] lg:w-1/5 shrink-0 aspect-[16/10] rounded-lg overflow-hidden border border-gray-100 shadow-sm group">
-                                <img src={src} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer" alt="Campus Life" loading="lazy" />
+                            <div key={i} className="w-[75vw] sm:w-[300px] lg:w-[calc(20%-10px)] shrink-0 aspect-[16/10] rounded-lg overflow-hidden border border-gray-100 shadow-sm group relative">
+                                <img src={src} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer" alt="Campus Life" loading="lazy" />
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* 9. Join Our College Family CTA */}
-                <div className="bg-[#111827] rounded-xl flex flex-col md:flex-row items-center justify-between p-6 shadow-lg text-white">
-                    <div className="flex items-center gap-5 mb-4 md:mb-0">
-                        <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                <div className="bg-[#111827] rounded-xl flex flex-col md:flex-row items-center justify-between p-6 shadow-lg text-white text-center md:text-left gap-6 md:gap-0">
+                    <div className="flex flex-col md:flex-row md:items-center gap-5">
+                        <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 mx-auto md:mx-0">
                             <GraduationCap size={28} className="text-[#93c5fd]" />
                         </div>
                         <div>
-                            <h2 className="text-[20px] font-bold mb-1">Join Our College Family</h2>
+                            <h2 className="text-[20px] font-bold mb-1 leading-tight">Join Our College Family</h2>
                             <p className="text-[13px] text-gray-300">Take the first step towards a bright future. Admissions for Class 11th are now open.</p>
                         </div>
                     </div>
-                    <Link to="#" className="bg-white text-gray-900 border border-transparent shadow hover:bg-gray-100 transition-colors font-bold px-6 py-2.5 rounded-lg flex items-center gap-2 whitespace-nowrap text-[14px]">
+                    <Link to="/admissions" className="bg-white text-gray-900 border border-transparent shadow hover:bg-gray-100 transition-colors font-bold px-6 py-3 rounded-lg flex items-center justify-center gap-2 whitespace-nowrap text-[14px] w-full md:w-auto">
                         Apply Now <ArrowRight size={16} />
                     </Link>
                 </div>

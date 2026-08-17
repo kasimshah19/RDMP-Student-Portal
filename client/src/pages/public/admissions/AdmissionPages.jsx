@@ -192,7 +192,7 @@ export const Class11Admission = () => (
                     For students applying for Class 11, please follow the applicable official Maharashtra FYJC admission process and instructions strictly.
                 </p>
                 <a href={admissionConfig.class11.externalPortal} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex relative z-10 items-center justify-center gap-2 px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-white font-bold rounded-xl transition-all shadow-sm">
+                    className="flex relative z-10 items-center justify-center gap-2 px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-white font-bold rounded-xl transition-all shadow-sm w-full sm:w-auto">
                     Visit Official Admission Portal <ExternalLink size={18} />
                 </a>
             </div>
@@ -454,7 +454,7 @@ export const ContactAdmission = () => (
                 </div>
 
                 <div className="mt-12 pt-10 border-t border-slate-700">
-                    <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 transition-colors rounded-xl font-bold font-lg">
+                    <Link to="/contact" className="flex justify-center items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 transition-colors rounded-xl font-bold text-lg w-full sm:w-auto sm:inline-flex">
                         Go to Main Contact Page <ArrowRight size={20} />
                     </Link>
                 </div>
