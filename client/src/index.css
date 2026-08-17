@@ -30,6 +30,10 @@
   --font-mono: "IBM Plex Mono", monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--color-cloud);

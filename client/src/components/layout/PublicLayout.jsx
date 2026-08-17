@@ -117,13 +117,9 @@ export default function PublicLayout() {
                     <nav className="flex flex-col gap-4">
                         {NAV_LINKS.map((nav, idx) => (
                             <div key={idx}>
-                                {nav.real ? (
-                                    <Link to={nav.path} className={`text-base font-medium opacity-90 ${location.pathname === nav.path ? 'text-brass' : ''}`}>{nav.label}</Link>
-                                ) : (
-                                    <span className="text-base font-medium opacity-60 flex items-center gap-1 cursor-default">
-                                        {nav.label} {nav.dropdown && <ChevronDown size={14} />}
-                                    </span>
-                                )}
+                                <Link to={nav.path || "#"} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-1 text-base font-medium opacity-90 hover:opacity-100 ${location.pathname === nav.path && nav.path !== '#' ? 'text-brass' : ''}`}>
+                                    {nav.label} {nav.dropdown && <ChevronDown size={14} className="opacity-60" />}
+                                </Link>
                             </div>
                         ))}
                     </nav>
@@ -180,16 +176,11 @@ export default function PublicLayout() {
                 <div className="sdp-public-mainnav hidden lg:block">
                     <div className="sdp-public-mainnav-inner">
                         {NAV_LINKS.map((nav, idx) => (
-                            nav.real ? (
-                                <Link key={idx} to={nav.path} className={`sdp-navItem ${location.pathname === nav.path ? 'active' : ''}`}>
-                                    {nav.icon && <HomeIcon size={16} className="mb-[2px]" />}
-                                    {nav.label}
-                                </Link>
-                            ) : (
-                                <span key={idx} className="sdp-navItem opacity-80" title="Coming soon">
-                                    {nav.label} {nav.dropdown && <ChevronDown size={14} className="opacity-60" />}
-                                </span>
-                            )
+                            <Link key={idx} to={nav.path || "#"} className={`sdp-navItem ${nav.real ? '' : 'opacity-80'} ${location.pathname === nav.path && nav.path !== '#' ? 'active' : ''}`}>
+                                {nav.icon && <HomeIcon size={16} className="mb-[2px]" />}
+                                {nav.label}
+                                {nav.dropdown && <ChevronDown size={14} className="opacity-60 ml-0.5" />}
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -233,21 +224,21 @@ export default function PublicLayout() {
                         <h3 className="font-semibold mb-5 text-[14px]">Quick Links</h3>
                         <ul className="space-y-3 text-[13px] opacity-75 flex flex-col">
                             <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                            <a href="#" className="hover:text-white transition-colors">About Us</a>
-                            <a href="#" className="hover:text-white transition-colors">Admissions</a>
-                            <a href="#" className="hover:text-white transition-colors">Academics</a>
-                            <a href="#" className="hover:text-white transition-colors">Students</a>
+                            <Link to="#" className="hover:text-white transition-colors">About Us</Link>
+                            <Link to="#" className="hover:text-white transition-colors">Admissions</Link>
+                            <Link to="#" className="hover:text-white transition-colors">Academics</Link>
+                            <Link to="#" className="hover:text-white transition-colors">Students</Link>
                         </ul>
                     </div>
 
                     <div>
                         <h3 className="font-semibold mb-5 text-[14px]">Important Links</h3>
                         <ul className="space-y-3 text-[13px] opacity-75 flex flex-col">
-                            <a href="#" className="hover:text-white transition-colors">Academic Calendar</a>
-                            <a href="#" className="hover:text-white transition-colors">Fee Structure</a>
-                            <a href="#" className="hover:text-white transition-colors">Downloads</a>
-                            <a href="#" className="hover:text-white transition-colors">Exam Timetable</a>
-                            <a href="#" className="hover:text-white transition-colors">Results</a>
+                            <Link to="#" className="hover:text-white transition-colors">Academic Calendar</Link>
+                            <Link to="#" className="hover:text-white transition-colors">Fee Structure</Link>
+                            <Link to="#" className="hover:text-white transition-colors">Downloads</Link>
+                            <Link to="#" className="hover:text-white transition-colors">Exam Timetable</Link>
+                            <Link to="#" className="hover:text-white transition-colors">Results</Link>
                         </ul>
                     </div>
 

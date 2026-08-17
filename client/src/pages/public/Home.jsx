@@ -224,7 +224,7 @@ export default function Home() {
                 </div>
 
                 {/* 4. About Our College */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+                <div id="about" className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 scroll-mt-24">
                     <div className="md:col-span-4 flex flex-col justify-center">
                         <h2 className="text-2xl font-bold text-gray-900 mb-3">About Our College</h2>
                         <p className="text-[13.5px] text-gray-600 leading-relaxed mb-6 pr-4">
@@ -301,10 +301,10 @@ export default function Home() {
                     </div>
 
                     {/* Upcoming Events */}
-                    <div className="glass-card p-5">
+                    <div id="academics" className="glass-card p-5 scroll-mt-24">
                         <div className="flex justify-between items-center mb-6">
                             <h3 className="font-bold text-[15px] text-gray-900">Upcoming Events</h3>
-                            <a href="#" className="text-[11px] font-bold text-[#2563EB] hover:underline">View All</a>
+                            <Link to="#" className="text-[11px] font-bold text-[#2563EB] hover:underline">View All</Link>
                         </div>
                         <div className="flex flex-col gap-6">
                             {UPCOMING_EVENTS.map((event, i) => (
@@ -340,7 +340,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl p-5 flex gap-4 h-1/2 items-center transition-transform hover:-translate-y-1 shadow-sm cursor-pointer">
+                        <div id="admissions" className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl p-5 flex gap-4 h-1/2 items-center transition-transform hover:-translate-y-1 shadow-sm cursor-pointer scroll-mt-24">
                             <div className="w-[50px] h-[50px] rounded-lg bg-[#22C55E] text-white flex items-center justify-center shrink-0 shadow-md shadow-green-200">
                                 <ClipboardCheck size={24} />
                             </div>
@@ -379,7 +379,7 @@ export default function Home() {
                 </div>
 
                 {/* 7. Students Achievements */}
-                <div className="mb-12">
+                <div id="students" className="mb-12 scroll-mt-24">
                     <div className="flex justify-between items-center mb-6 border-b border-gray-200 pb-2">
                         <h2 className="text-[18px] font-bold text-gray-900">Students Achievements</h2>
                         <Link to="#" className="text-[12px] font-bold text-[#2563EB] hover:underline">View All</Link>
@@ -434,7 +434,7 @@ export default function Home() {
                 </div>
 
                 {/* 8. Campus Life */}
-                <div className="mb-14">
+                <div id="gallery" className="mb-14 scroll-mt-24">
                     <div className="flex justify-between items-center mb-6 border-b border-gray-200 pb-2">
                         <h2 className="text-[18px] font-bold text-gray-900">Campus Life</h2>
                         <Link to="#" className="text-[12px] font-bold text-[#2563EB] hover:underline flex items-center gap-1">View Gallery <ArrowRight size={12} /></Link>
