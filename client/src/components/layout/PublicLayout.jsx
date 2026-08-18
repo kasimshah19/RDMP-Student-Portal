@@ -272,7 +272,7 @@ export default function PublicLayout() {
                                 <Link to="/about" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">About Us</Link>
                                 <Link to="/admissions" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Admissions</Link>
                                 <Link to="/academics" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Academics</Link>
-                                <Link to="/students" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Students</Link>
+                                <Link to="/student/dashboard" className="w-fit hover:text-blue-400 hover:translate-x-1 transition-all duration-300 flex items-center">Students</Link>
                             </ul>
                         </div>
 

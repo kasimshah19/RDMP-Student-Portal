@@ -108,7 +108,7 @@ const AppRoutes = () => {
                 <Route path="/academics/examinations" element={<Examinations />} />
                 <Route path="/academics/results" element={<ResultsMarksheets />} />
                 <Route path="/academics/notices" element={<AcademicNotices />} />
-                <Route path="/students" element={<UnderConstruction />} />
+                <Route path="/students" element={<Navigate to="/student/dashboard" replace />} />
                 <Route path="/notices" element={<UnderConstruction />} />
                 <Route path="/gallery" element={<UnderConstruction />} />
                 <Route path="/contact" element={<UnderConstruction />} />
