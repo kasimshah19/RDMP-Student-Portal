@@ -12,6 +12,7 @@ import AdmissionDetail from '../pages/admin/AdmissionDetail';
 import ClassManagement from '../pages/admin/ClassManagement';
 import StudentList from '../pages/admin/StudentList';
 import StudentDetail from '../pages/admin/StudentDetail';
+import Downloads from '../pages/public/Downloads';
 import TeacherList from '../pages/admin/TeacherList';
 import AttendanceOverview from '../pages/admin/AttendanceOverview';
 import Profile from '../pages/student/Profile';
@@ -115,7 +116,7 @@ const AppRoutes = () => {
 
                 {/* Students Module Public Routes */}
                 <Route path="/students/guidelines" element={<StudentGuidelines />} />
-                <Route path="/downloads" element={<UnderConstruction />} />
+                <Route path="/downloads" element={<Downloads />} />
             </Route>
 
             <Route path="/admission/apply" element={<AdmissionForm />} />
