@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
 import { AuthProvider } from './context/AuthContext';
 import { ToastProvider, useToast } from './context/ToastContext';
+import { HelmetProvider } from 'react-helmet-async';
 
 const GlobalErrorListener = () => {
   const { addToast } = useToast();
@@ -24,9 +25,11 @@ function App() {
     <ToastProvider>
       <AuthProvider>
         <GlobalErrorListener />
-        <Router>
-          <AppRoutes />
-        </Router>
+        <HelmetProvider>
+          <Router>
+            <AppRoutes />
+          </Router>
+        </HelmetProvider>
       </AuthProvider>
     </ToastProvider>
   );

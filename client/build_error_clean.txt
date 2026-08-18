@@ -1,0 +1,51 @@
+
+> client@0.0.0 build
+> vite build
+
+[36mvite v8.2.1 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...✓ 2488 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/registerSW.js                0.13 kB
+dist/manifest.webmanifest         0.31 kB
+dist/index.html                   0.76 kB │ gzip:   0.45 kB
+dist/assets/index-jc36p9TU.css   99.67 kB │ gzip:  16.71 kB
+dist/assets/index-Dq3apoUz.js   962.79 kB │ gzip: 260.80 kB
+
+[33m[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[31m✗[39m Build failed in 1.85s
+
+PWA v1.3.0
+mode      generateSW
+precache  5 entries (1038.45 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-9c191d2f.js
+[31merror during build:
+[31mBuild failed with 1 error:
+
+Error: [vite]: Rolldown failed to resolve import "react-helmet-async" from "D:/RDMP-Student-Portal/rdmp-student-portal/client/src/pages/public/students/StudentGuidelines.jsx".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:33823:57)
+    at file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:33859:71
+    at onwarn (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/@vitejs/plugin-react/dist/index.js:40:7)
+    at file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:33859:28
+    at onRollupLog (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:33854:63)
+    at onLog (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:33619:4)
+    at file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/rolldown/dist/shared/create-bundler-option-wRiQzEJ3.mjs:48:26
+    at logger (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/rolldown/dist/shared/create-bundler-option-wRiQzEJ3.mjs:39:3)[31m
+    at aggregateBindingErrorsIntoJsError (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/rolldown/dist/shared/error-CVc7IgvG.mjs:48:18)
+    at unwrapBindingResult (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/rolldown/dist/shared/error-CVc7IgvG.mjs:18:128)
+    at #build (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/rolldown/dist/shared/rolldown-DiYVDns9.mjs:132:34)
+    at async buildEnvironment (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:33730:66)
+    at async Object.build (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:34150:19)
+    at async Object.buildApp (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/chunks/node.js:34147:153)
+    at async CAC.<anonymous> (file:///D:/RDMP-Student-Portal/rdmp-student-portal/client/node_modules/vite/dist/node/cli.js:776:3) {
+  errors: [Getter/Setter]
+}[39m
