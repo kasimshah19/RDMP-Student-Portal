@@ -50,12 +50,14 @@ import {
     SubjectsCurriculum, AcademicCalendar, ClassTimetable,
     Examinations, ResultsMarksheets, AcademicNotices
 } from '../pages/public/academics/AcademicPages';
+import StudentGuidelines from '../pages/public/students/StudentGuidelines';
 import UnderConstruction from '../pages/shared/UnderConstruction';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
     const { isAuthenticated, user, loading } = useContext(AuthContext);
+    const location = useLocation();
     if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-    if (!isAuthenticated) return <Navigate to="/login" replace />;
+    if (!isAuthenticated) return <Navigate to="/login" state={{ from: location }} replace />;
     if (!allowedRoles.includes(user.role)) return <Navigate to={`/${user.role}/dashboard`} replace />;
     return children;
 };
@@ -110,11 +112,10 @@ const AppRoutes = () => {
                 <Route path="/notices" element={<UnderConstruction />} />
                 <Route path="/gallery" element={<UnderConstruction />} />
                 <Route path="/contact" element={<UnderConstruction />} />
-                <Route path="/calendar" element={<UnderConstruction />} />
-                <Route path="/fee-structure" element={<UnderConstruction />} />
+
+                {/* Students Module Public Routes */}
+                <Route path="/students/guidelines" element={<StudentGuidelines />} />
                 <Route path="/downloads" element={<UnderConstruction />} />
-                <Route path="/exam-timetable" element={<UnderConstruction />} />
-                <Route path="/results" element={<UnderConstruction />} />
             </Route>
 
             <Route path="/admission/apply" element={<AdmissionForm />} />

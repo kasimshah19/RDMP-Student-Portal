@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import AdmissionsMegaMenu, { ADMISSION_MENU_ITEMS } from './AdmissionsMegaMenu';
 import { AcademicsMegaMenu, AcademicsMobileMenu } from './AcademicsMegaMenu';
+import { StudentsMegaMenu, StudentsMobileMenu } from './StudentsMegaMenu';
 import { admissionConfig } from '../../pages/public/admissions/admissionConfig';
 
 export default function PublicLayout() {
@@ -115,6 +116,8 @@ export default function PublicLayout() {
                                 </div>
                             ) : nav.label === "Academics" ? (
                                 <AcademicsMobileMenu key={idx} closeMobileMenu={() => setMobileMenuOpen(false)} />
+                            ) : nav.label === "Students" ? (
+                                <StudentsMobileMenu key={idx} closeMobileMenu={() => setMobileMenuOpen(false)} />
                             ) : (
                                 <div key={idx}>
                                     <Link to={nav.path || "#"} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-2 text-base font-semibold opacity-90 hover:opacity-100 ${location.pathname === nav.path && nav.path !== '#' ? 'text-blue-600' : 'text-gray-800'}`}>
@@ -205,6 +208,10 @@ export default function PublicLayout() {
                             ) : nav.label === "Academics" ? (
                                 <div key={idx} className="relative h-full flex items-center shrink-0">
                                     <AcademicsMegaMenu />
+                                </div>
+                            ) : nav.label === "Students" ? (
+                                <div key={idx} className="relative h-full flex items-center shrink-0">
+                                    <StudentsMegaMenu />
                                 </div>
                             ) : (
                                 <Link key={idx} to={nav.path || "#"} className={`sdp-navItem ${nav.real ? '' : 'opacity-80'} ${location.pathname === nav.path && nav.path !== '#' ? 'active' : ''}`}>

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useToast } from '../../context/ToastContext';
 
 const Login = () => {
@@ -13,6 +13,7 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const { addToast } = useToast();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,7 +24,11 @@ const Login = () => {
             const res = await login(role, { email, password });
             if (res.success) {
                 addToast(`Successfully authenticated as ${role.toUpperCase()}`, 'success');
-                navigate(`/${role}/dashboard`);
+
+                // Navigate back to the originally requested URL, if it exists.
+                // React Router ProtectedRoute handles validation if they switch roles mid-auth.
+                const destination = location.state?.from?.pathname || `/${role}/dashboard`;
+                navigate(destination, { replace: true });
             } else {
                 setErrorMsg(res.message || 'Error occurred during login');
             }
