@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { DownloadCloud, ChevronRight, FileText, FileDown, Calendar, FileBadge, BookOpen, ShieldCheck } from 'lucide-react';
+import { DownloadCloud, ChevronRight, FileText, Calendar, FileBadge, BookOpen, ShieldCheck } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const DOWNLOAD_CATEGORIES = [
@@ -57,25 +57,36 @@ const DOWNLOAD_CATEGORIES = [
 export default function Downloads() {
     const location = useLocation();
 
-    const handleDownload = (e, file) => {
-        if (file.url) return;
+    const handleDownload = async (e, file) => {
+        e.preventDefault(); // Prevent default anchor routing to stop SPA redirects
 
-        e.preventDefault();
+        try {
+            let blob;
+            if (file.url) {
+                // Fetch the actual physical file from the server
+                const response = await fetch(file.url);
+                if (!response.ok) throw new Error('File not found');
+                blob = await response.blob();
+            } else {
+                // Dummy file generator bypass
+                const pdfData = "%PDF-1.0\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj 3 0 obj<</Type/Page/MediaBox[0 0 3 3]>>endobj\ntrailer<</Size 4/Root 1 0 R>>\n%%EOF";
+                blob = new Blob([pdfData], { type: 'application/pdf' });
+            }
 
-        // Minimal valid PDF string
-        const pdfData = "%PDF-1.0\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj 3 0 obj<</Type/Page/MediaBox[0 0 3 3]>>endobj\ntrailer<</Size 4/Root 1 0 R>>\n%%EOF";
-        const blob = new Blob([pdfData], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.url ? file.url.split('/').pop() : file.name.replace(/[^a-zA-Z0-9-]/g, '_') + '.pdf';
 
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = file.name.replace(/[^a-zA-Z0-9-]/g, '_') + '.pdf';
+            document.body.appendChild(a);
+            a.click();
 
-        document.body.appendChild(a);
-        a.click();
-
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Error downloading file:", error);
+            alert("Sorry, the document could not be downloaded right now. Please try again later.");
+        }
     };
 
     useEffect(() => {
@@ -131,8 +142,6 @@ export default function Downloads() {
                                         <a
                                             key={fileIdx}
                                             href={file.url || "#"}
-                                            target={file.url ? "_blank" : undefined}
-                                            rel={file.url ? "noopener noreferrer" : undefined}
                                             onClick={(e) => handleDownload(e, file)}
                                             className="group flex items-start gap-4 p-5 rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-blue-300 hover:shadow-[0_12px_40px_-10px_rgba(37,99,235,0.2)] hover:-translate-y-1.5 hover:bg-slate-50 relative overflow-hidden transition-all duration-300 ease-out"
                                         >
