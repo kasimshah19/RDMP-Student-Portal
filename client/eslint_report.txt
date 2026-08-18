@@ -1,0 +1,404 @@
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\get_error.js
+  1:22  error  'require' is not defined  no-undef
+  7:16  error  'require' is not defined  no-undef
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\App.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\common\EmptyState.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\common\Loader.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\common\NoticeBoard.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\layout\AcademicsMegaMenu.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\layout\AdminTeacherLayout.jsx
+  1:8   error  'React' is defined but never used         no-unused-vars
+  6:29  error  'CheckCircle2' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\layout\AdmissionsMegaMenu.jsx
+  1:8   error  'React' is defined but never used                                                                                               no-unused-vars
+  2:16  error  'useLocation' is defined but never used                                                                                         no-unused-vars
+  5:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\layout\Navbar.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\layout\PublicLayout.jsx
+  20:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  18 |     // Close menu on route change
+  19 |     useEffect(() => {
+> 20 |         setMobileMenuOpen(false);
+     |         ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  21 |     }, [location.pathname]);
+  22 |
+  23 |     const NAV_LINKS = [  react-hooks/set-state-in-effect
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\layout\StudentLayout.jsx
+  57:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  55 |     // Close sidebar on route change
+  56 |     useEffect(() => {
+> 57 |         setSidebarOpen(false);
+     |         ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  58 |     }, [location.pathname]);
+  59 |
+  60 |     const STUDENT = {  react-hooks/set-state-in-effect
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\components\layout\StudentsMegaMenu.jsx
+  1:8   error  'React' is defined but never used                                                                                               no-unused-vars
+  5:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\context\AuthContext.jsx
+   1:8   error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+   4:14  error  Fast refresh only works when a file only exports components. Move your React context(s) to a separate file                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-refresh/only-export-components
+  16:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  14 |         const storedUser = localStorage.getItem('user');
+  15 |         if (storedUser) {
+> 16 |             setUser(JSON.parse(storedUser));
+     |             ^^^^^^^ Avoid calling setState() directly within an effect
+  17 |         }
+  18 |         setLoading(false);
+  19 |     }, []);  react-hooks/set-state-in-effect
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\context\ToastContext.jsx
+   1:8   error    'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+   5:14  error    Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-refresh/only-export-components
+  13:26  error    Error: Cannot access variable before it is declared
+
+`removeToast` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  11 |         const id = Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
+  12 |         setToasts(prev => [...prev, { id, message, type }]);
+> 13 |         setTimeout(() => removeToast(id), 5000);
+     |                          ^^^^^^^^^^^ `removeToast` accessed before it is declared
+  14 |     }, []);
+  15 |
+  16 |     const removeToast = useCallback(id => {
+
+  14 |     }, []);
+  15 |
+> 16 |     const removeToast = useCallback(id => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 17 |         setToasts(prev => prev.filter(t => t.id !== id));
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |     }, []);
+     | ^^^^^^^^^^^^ `removeToast` is declared here
+  19 |
+  20 |     return (
+  21 |         <ToastContext.Provider value={{ addToast }}>  react-hooks/immutability
+  14:8   warning  React Hook useCallback has a missing dependency: 'removeToast'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+  16:37  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. This value was memoized in source but not in compilation output.
+
+  14 |     }, []);
+  15 |
+> 16 |     const removeToast = useCallback(id => {
+     |                                     ^^^^^^^
+> 17 |         setToasts(prev => prev.filter(t => t.id !== id));
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |     }, []);
+     | ^^^^^^ Could not preserve existing memoization
+  19 |
+  20 |     return (
+  21 |         <ToastContext.Provider value={{ addToast }}>                                                                                                                                                                                                                                                                                                                                   react-hooks/preserve-manual-memoization
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\AdminDashboard.jsx
+   1:8   error  'React' is defined but never used              no-unused-vars
+  10:13  error  'user' is assigned a value but never used      no-unused-vars
+  10:19  error  'logout' is assigned a value but never used    no-unused-vars
+  11:11  error  'navigate' is assigned a value but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\AdmissionDetail.jsx
+   1:8   error  'React' is defined but never used              no-unused-vars
+  14:11  error  'navigate' is assigned a value but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\AdmissionList.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\AttendanceOverview.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\ClassManagement.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\DocumentVerification.jsx
+    1:8   error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+    2:61  error  'Clock' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+   24:18  error  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   32:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  30 |
+  31 |     useEffect(() => {
+> 32 |         fetchSubmissions();
+     |         ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |         // eslint-disable-next-line
+  34 |     }, [filter]);
+  35 |  react-hooks/set-state-in-effect
+  165:18  error  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\ExamManagement.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\NoticeManagement.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\Reports.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\StudentDetail.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\StudentList.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\admin\TeacherList.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\auth\Login.jsx
+   1:8   error  'React' is defined but never used  no-unused-vars
+  35:18  error  'err' is defined but never used    no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\About.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\AdmissionForm.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\ApplicationStatus.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\DocumentUpload.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\Home.jsx
+  1:8   error  'React' is defined but never used      no-unused-vars
+  5:18  error  'MapPin' is defined but never used     no-unused-vars
+  5:43  error  'FileText' is defined but never used   no-unused-vars
+  6:56  error  'ImageIcon' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\academics\AcademicPages.jsx
+  1:17  error  'useState' is defined but never used     no-unused-vars
+  5:29  error  'ChevronDown' is defined but never used  no-unused-vars
+  5:42  error  'Download' is defined but never used     no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\academics\academicConfig.js
+  2:30  error  'LayoutDashboard' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\admissions\AdmissionPages.jsx
+  2:16  error  'useLocation' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\admissions\admissionConfig.js
+  1:76   error  'MapPin' is defined but never used        no-unused-vars
+  1:98   error  'ChevronRight' is defined but never used  no-unused-vars
+  1:112  error  'Check' is defined but never used         no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\public\students\StudentGuidelines.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\shared\UnderConstruction.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\AccountSettings.jsx
+  1:8   error  'React' is defined but never used       no-unused-vars
+  2:10  error  'Settings' is defined but never used    no-unused-vars
+  2:39  error  'Smartphone' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\Documents.jsx
+    1:8   error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    no-unused-vars
+    1:47  error  'useRef' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   no-unused-vars
+   22:18  error  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      no-unused-vars
+   30:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  28 |
+  29 |     useEffect(() => {
+> 30 |         fetchDocs();
+     |         ^^^^^^^^^ Avoid calling setState() directly within an effect
+  31 |         // eslint-disable-next-line
+  32 |     }, []);
+  33 |  react-hooks/set-state-in-effect
+  283:22  error  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\Feedback.jsx
+  1:8   error  'React' is defined but never used          no-unused-vars
+  2:10  error  'MessageSquare' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\Fees.jsx
+   1:8   error    'React' is defined but never used                                                                            no-unused-vars
+   2:32  error    'ExternalLink' is defined but never used                                                                     no-unused-vars
+  20:22  error    'err' is defined but never used                                                                              no-unused-vars
+  27:8   warning  React Hook useEffect has a missing dependency: 'addToast'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\Leave.jsx
+   1:8   error    'React' is defined but never used                                                                            no-unused-vars
+   3:10  error    'getLeave' is defined but never used                                                                         no-unused-vars
+  29:22  error    'err' is defined but never used                                                                              no-unused-vars
+  36:8   warning  React Hook useEffect has a missing dependency: 'addToast'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\Library.jsx
+   1:8   error    'React' is defined but never used                                                                            no-unused-vars
+  20:22  error    'err' is defined but never used                                                                              no-unused-vars
+  27:8   warning  React Hook useEffect has a missing dependency: 'addToast'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\MyAttendance.jsx
+   1:8   error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  78:18  error  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           no-unused-vars
+  86:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  84 |
+  85 |     useEffect(() => {
+> 86 |         fetchAttendance();
+     |         ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  87 |         // eslint-disable-next-line
+  88 |     }, [subject, fromDate, toDate]);
+  89 |  react-hooks/set-state-in-effect
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\MyExaminations.jsx
+   1:8   error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               no-unused-vars
+   7:32  error  'Download' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  24:18  error  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  32:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  30 |
+  31 |     useEffect(() => {
+> 32 |         fetchExams();
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |         // eslint-disable-next-line
+  34 |     }, [statusTab]);
+  35 |  react-hooks/set-state-in-effect
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\MyResults.jsx
+   1:8   error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   7:27  error  'Calendar' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+   7:37  error  'ExternalLink' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   no-unused-vars
+  26:18  error  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  34:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  32 |
+  33 |     useEffect(() => {
+> 34 |         fetchResults();
+     |         ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  35 |         // eslint-disable-next-line
+  36 |     }, []);
+  37 |  react-hooks/set-state-in-effect
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\Notices.jsx
+   1:8   error    'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  20:22  error    'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               no-unused-vars
+  27:8   warning  React Hook useEffect has a missing dependency: 'addToast'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/exhaustive-deps
+  85:71  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  83 |                                     <div className="flex items-center gap-2 text-xs font-semibold text-[var(--slate)]">
+  84 |                                         <Calendar size={14} />
+> 85 |                                         {new Date(notice.createdAt || Date.now()).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+     |                                                                       ^^^^^^^^^^ Cannot call impure function
+  86 |                                     </div>
+  87 |                                     <button onClick={handleReadMore} className="flex items-center gap-1.5 text-sm font-semibold text-[var(--brass)] hover:text-amber-700 transition-colors">
+  88 |                                         Read More <ChevronRight size={16} />  react-hooks/purity
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\Profile.jsx
+   1:8   error  'React' is defined but never used       no-unused-vars
+   1:38  error  'useContext' is defined but never used  no-unused-vars
+   5:10  error  'User' is defined but never used        no-unused-vars
+   5:22  error  'Edit2' is defined but never used       no-unused-vars
+   5:42  error  'X' is defined but never used           no-unused-vars
+  57:22  error  'err' is defined but never used         no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\student\TimeTable.jsx
+   1:8   error    'React' is defined but never used                                                                            no-unused-vars
+  20:22  error    'err' is defined but never used                                                                              no-unused-vars
+  27:8   warning  React Hook useEffect has a missing dependency: 'addToast'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\teacher\AttendanceReport.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\teacher\EnterMarks.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\teacher\ExamSummary.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\teacher\MarkAttendance.jsx
+  1:8   error  'React' is defined but never used  no-unused-vars
+  2:10  error  'Link' is defined but never used   no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\pages\teacher\TeacherDashboard.jsx
+  1:8  error  'React' is defined but never used  no-unused-vars
+
+D:\RDMP-Student-Portal\rdmp-student-portal\client\src\routes\AppRoutes.jsx
+   1:8   error  'React' is defined but never used  no-unused-vars
+  58:22  error  'useLocation' is not defined       no-undef
+
+??? 131 problems (125 errors, 6 warnings)
+
