@@ -48,7 +48,6 @@ const DOWNLOAD_CATEGORIES = [
         borderColor: "border-emerald-200",
         files: [
             { name: "Student Code of Conduct", desc: "Official behavioral policies", size: "900 KB", format: "PDF", date: "Jan 10, 2026" },
-            { name: "Hostel Rules & Regulations", desc: "For boarding students", size: "1.5 MB", format: "PDF", date: "Apr 05, 2026" },
             { name: "Library Membership Form & Policy", desc: "Book circulation and fines structure", size: "600 KB", format: "PDF", date: "May 20, 2026" }
         ]
     }
@@ -58,25 +57,22 @@ export default function Downloads() {
     const location = useLocation();
 
     const handleDownload = async (e, file) => {
-        e.preventDefault(); // Prevent default anchor routing to stop SPA redirects
+        if (!file.url) {
+            e.preventDefault();
+            return;
+        }
+
+        e.preventDefault();
 
         try {
-            let blob;
-            if (file.url) {
-                // Fetch the actual physical file from the server
-                const response = await fetch(file.url);
-                if (!response.ok) throw new Error('File not found');
-                blob = await response.blob();
-            } else {
-                // Dummy file generator bypass
-                const pdfData = "%PDF-1.0\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj 3 0 obj<</Type/Page/MediaBox[0 0 3 3]>>endobj\ntrailer<</Size 4/Root 1 0 R>>\n%%EOF";
-                blob = new Blob([pdfData], { type: 'application/pdf' });
-            }
+            const response = await fetch(file.url);
+            if (!response.ok) throw new Error('File not found');
+            const blob = await response.blob();
 
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = file.url ? file.url.split('/').pop() : file.name.replace(/[^a-zA-Z0-9-]/g, '_') + '.pdf';
+            a.download = file.url.split('/').pop();
 
             document.body.appendChild(a);
             a.click();
@@ -142,15 +138,19 @@ export default function Downloads() {
                                         <a
                                             key={fileIdx}
                                             href={file.url || "#"}
+                                            title={!file.url ? "Coming soon" : ""}
                                             onClick={(e) => handleDownload(e, file)}
-                                            className="group flex items-start gap-4 p-5 rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-blue-300 hover:shadow-[0_12px_40px_-10px_rgba(37,99,235,0.2)] hover:-translate-y-1.5 hover:bg-slate-50 relative overflow-hidden transition-all duration-300 ease-out"
+                                            className={`group flex items-start gap-4 p-5 rounded-2xl border bg-white relative overflow-hidden transition-all duration-300 ${file.url
+                                                    ? "border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-[0_12px_40px_-10px_rgba(37,99,235,0.2)] hover:-translate-y-1.5 hover:bg-slate-50 cursor-pointer"
+                                                    : "border-slate-100 opacity-60 grayscale cursor-not-allowed"
+                                                }`}
                                         >
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-colors"></div>
                                             <div className="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100 mt-1">
                                                 <FileText size={20} />
                                             </div>
                                             <div className="flex-1">
-                                                <h3 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{file.name}</h3>
+                                                <h3 className={`font-bold transition-colors ${file.url ? 'text-slate-800 group-hover:text-blue-600' : 'text-slate-600'}`}>{file.name}</h3>
                                                 <p className="text-sm text-slate-500 mt-1 line-clamp-2">{file.desc}</p>
 
                                                 <div className="flex items-center gap-4 mt-4 text-xs font-medium text-slate-400">
@@ -159,8 +159,9 @@ export default function Downloads() {
                                                     <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span> {file.date}</span>
                                                 </div>
                                             </div>
-                                            <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-blue-500 group-hover:text-white transition-colors shrink-0 self-center">
-                                                <FileDown size={18} />
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors shrink-0 self-center ${file.url ? 'bg-slate-100 text-slate-400 group-hover:bg-blue-500 group-hover:text-white' : 'bg-slate-50 text-slate-300'
+                                                }`}>
+                                                <DownloadCloud size={18} />
                                             </div>
                                         </a>
                                     ))}
