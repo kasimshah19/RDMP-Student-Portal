@@ -624,17 +624,3 @@ async function createHolidayList() {
     fs.writeFileSync(path.join(OUTPUT_DIR, 'Holiday_List_2026.pdf'), pdfBytes);
 }
 
-// Execute
-async function generateAll() {
-    console.log("Generating Institutional Forms...");
-    await createAdmissionForm();
-    await createScholarshipForm();
-    await createTCForm();
-    await createAcademicCalendar();
-    await createHolidayList();
-    console.log("Done! Forms generated dynamically inside client/public/downloads/");
-}
-
-generateAll().catch(err => {
-    console.error("Error generating PDFs", err);
-});
