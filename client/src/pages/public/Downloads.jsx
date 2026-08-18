@@ -57,6 +57,25 @@ const DOWNLOAD_CATEGORIES = [
 export default function Downloads() {
     const location = useLocation();
 
+    const handleDownload = (e, fileName) => {
+        e.preventDefault();
+
+        // Minimal valid PDF string
+        const pdfData = "%PDF-1.0\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj 2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj 3 0 obj<</Type/Page/MediaBox[0 0 3 3]>>endobj\ntrailer<</Size 4/Root 1 0 R>>\n%%EOF";
+        const blob = new Blob([pdfData], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName.replace(/[^a-zA-Z0-9-]/g, '_') + '.pdf';
+
+        document.body.appendChild(a);
+        a.click();
+
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
     }, [location.pathname]);
@@ -110,9 +129,10 @@ export default function Downloads() {
                                         <a
                                             key={fileIdx}
                                             href="#"
-                                            onClick={(e) => { e.preventDefault(); alert("File download initiated."); }}
-                                            className="group flex items-start gap-4 p-5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-blue-200 hover:shadow-[0_12px_30px_-10px_rgba(37,99,235,0.15)] hover:-translate-y-1 transition-all duration-300"
+                                            onClick={(e) => handleDownload(e, file.name)}
+                                            className="group flex items-start gap-4 p-5 rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-blue-300 hover:shadow-[0_12px_40px_-10px_rgba(37,99,235,0.2)] hover:-translate-y-1.5 hover:bg-slate-50 relative overflow-hidden transition-all duration-300 ease-out"
                                         >
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-colors"></div>
                                             <div className="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100 mt-1">
                                                 <FileText size={20} />
                                             </div>
